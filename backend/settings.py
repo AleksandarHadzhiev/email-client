@@ -11,7 +11,11 @@ class Settings(BaseSettings):
     BACKEND_URL:str=""
     FRONTEND_URL:str=""
     REDIRECT_URI:str=""
-    
+    MICROSOFT_CLIENT_ID: str = ""
+    MICROSOFT_CLIENT_SECRET: str = ""
+    MICROSOFT_SCOPE: list = []
+    # MICROSOFT_TENANT: str = ""
+    MICROSOFT_REDIRECT_PATH: str = "" 
     class Config:
         env_file = ".env"
         env_file_encoding = "utf=8"
