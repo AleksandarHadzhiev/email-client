@@ -5,6 +5,7 @@ import identity.web
 from settings import Settings
 from fastapi import APIRouter, Response, Request
 from werkzeug.datastructures import ImmutableMultiDict
+from service import MicrosoftService
 
 class MicrosoftRouter:
     
@@ -12,6 +13,7 @@ class MicrosoftRouter:
         self.authority =f"https://login.microsoftonline.com/common"
         self.settings = settings
         self.router = APIRouter()
+        self.service = MicrosoftService()
         self.router.add_api_route("/microsoft/login", self.login, methods=["GET"])
         self.router.add_api_route("/microsoft/response", self.auth_response, methods=["POST"])
         self.router.add_api_route("/microsoft/logout", self.logout, methods=["GET"])
@@ -29,7 +31,6 @@ class MicrosoftRouter:
             client_credential=self.settings.MICROSOFT_CLIENT_SECRET
         )
         self.set_auth(auth=auth)
-        print(self.settings.REDIRECT_URI)
         response = auth.log_in(
             scopes=self.settings.MICROSOFT_SCOPE,
             redirect_uri=self.settings.REDIRECT_URI
@@ -45,21 +46,8 @@ class MicrosoftRouter:
 
     async def auth_response(self, request: Request):
         body = await request.json()
-        print(body)
-        pathname = body["pathname"]
-        parse_res = urlparse(pathname)
-        query_params = parse_qs(parse_res.query)
-        input = ImmutableMultiDict(
-            [
-                ('code', query_params["code"][0]),
-                ('client_info', query_params["client_info"][0]),
-                ('state', query_params["state"][0]),
-            ]
-        )
-        print(input)
-        result = self.auth.complete_log_in(input)
-        print(result)
+        login_data = self.service.get_data_for_login(request_body=body)
+        result = self.auth.complete_log_in(login_data)
         user = self.auth.get_user()
-        print(user)
         return Response(content=json.dumps(user), media_type="text/plain")
         
