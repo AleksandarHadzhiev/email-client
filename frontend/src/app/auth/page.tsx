@@ -7,7 +7,7 @@ export default function Index() {
 
     console.log("MEOW")
     const searchParams = useSearchParams()
-    const [userData, setUserData] = useState()
+    const [usename, setUsername] = useState("")
     const GOOGLE_URL = "http://127.0.0.1:8000/google/callback"
     const MICROSOFT_URL = "http://127.0.0.1:8000/microsoft/response"
 
@@ -26,7 +26,7 @@ export default function Index() {
         try {
             const res = await fetch(GOOGLE_URL, { method: "POST", body: JSON.stringify({ pathname: window.location.href }) });
             const data = await res.json();
-            setUserData(data)
+            setUsername(data.email)
         } catch (err) {
             throw err;
         }
@@ -37,8 +37,7 @@ export default function Index() {
         try {
             const res = await fetch(MICROSOFT_URL, { method: "POST", body: JSON.stringify({ pathname: window.location.href }) });
             const data = await res.json();
-            console.log(data)
-            setUserData(data)
+            setUsername(data.preferred_username)
         } catch (err) {
             throw err;
         }
@@ -49,7 +48,7 @@ export default function Index() {
     }, [])
     return (
         <div>
-            <button>Meow</button>
+            <button>You have logged in successfully. Welcome to the email client {usename}.</button>
         </div>
     )
 }

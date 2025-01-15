@@ -4,8 +4,7 @@ from urllib.parse import parse_qs, urlparse
 import identity.web
 from settings import Settings
 from fastapi import APIRouter, Response, Request
-from werkzeug.datastructures import ImmutableMultiDict
-from service import MicrosoftService
+from .service import MicrosoftService
 
 class MicrosoftRouter:
     
