@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export default function Home() {
 
   const BASE_URL = "http://localhost:8000"
+  const LOGIN_URL = "http://localhost:8000/login"
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,7 @@ export default function Home() {
         console.log(err)
       })
     }
+
     fetchData()
   })
 
