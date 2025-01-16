@@ -1,5 +1,6 @@
 from app.src.Errors.LoginFactoryErrors import NotValidEmail, NotSupportedDomain
-
+from app.src.Google.sso import GoogleSSO
+from app.src.Microsoft.sso import MicrosoftSSO
 class LoginFactory():
     
     def __init__(self, email):
@@ -26,16 +27,15 @@ class LoginFactory():
     def _check_domain(self):
         for supported_domain in self.supported_domains:
             is_in_domains = str(self.email).endswith(supported_domain)
-            if is_in_domains and supported_domain == "gmail.com":
-                return "google"
-            elif is_in_domains and supported_domain == "outlook.com":
-                return "microsoft"
+            if is_in_domains and supported_domain == "@gmail.com":
+                return "google" # transform to a google sso class
+            elif is_in_domains and supported_domain == "@outlook.com":
+                return "microsoft" # transform to a microsoft class
         return "invalid"
 
 
-    def get_sso_based_on_domain(self):
+    def get_sso_based_on_domain(self, settings):
         if self.domain == "google":
-            return "Google email"
+            return GoogleSSO(settings=settings)
         elif self.domain == "microsoft":
-            return "Microsoft email"
-        return
+            return MicrosoftSSO(settings=settings)

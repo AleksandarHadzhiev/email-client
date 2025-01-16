@@ -1,12 +1,13 @@
 import unittest
 from app.src.Factory.LoginFactory import LoginFactory
 from app.src.Errors.LoginFactoryErrors import NotSupportedDomain, NotValidEmail
-
+from app.settings import Settings
 
 class TestLoginFactory(unittest.TestCase):
     
     def __init__(self, methodName = "runTest"):
         super().__init__(methodName)
+        self.settings = Settings()
 
 
     def test_not_valid_email_format(self):
@@ -29,5 +30,15 @@ class TestLoginFactory(unittest.TestCase):
         self.assertEqual(str(exception.exception), f"The email is not from supported domain")
 
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_for_google_sso(self):
+        email = "alekshadzhiev01@gmail.com"
+        self.login_factory = LoginFactory(email=email)
+        sso = self.login_factory.get_sso_based_on_domain(settings=self.settings)
+        self.assertIsNotNone(sso)
+
+
+    def test_for_microsoft_sso(self):
+        email = "alekshadzhiev01@outlook.com"
+        self.login_factory = LoginFactory(email=email)
+        sso = self.login_factory.get_sso_based_on_domain(settings=self.settings)
+        self.assertIsNotNone(sso)

@@ -1,2 +1,1 @@
-import sys
-sys.path.append('.')
+"""Inits the src folder."""

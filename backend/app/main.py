@@ -1,20 +1,18 @@
 from app.settings import Settings
 from fastapi import FastAPI
 import uvicorn
-from src.Google.router import GoogleRouter
-from src.Microsoft.router import MicrosoftRouter
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
+from app.src.Login.router import LoginRouter
+
 
 settings = Settings()
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="session")
 
-google_router = GoogleRouter(settings)
-microsoft_router = MicrosoftRouter(settings)
-app.include_router(google_router.router)
-app.include_router(microsoft_router.router)
+login_router = LoginRouter(settings=settings)
+app.include_router(login_router.router)
 origins = [
     "*"
 ]
