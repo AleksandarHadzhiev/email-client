@@ -12,6 +12,7 @@ class LoginRouter():
         self.service = LoginService(settings=settings)
         self.router.add_api_route("/login", self.login, methods=["POST"])
         self.router.add_api_route("/auth", self.auth, methods=["POST"])
+        self.router.add_api_route("/get/mails", self.get_mails, methods=["GET"])
 
 
     def set_sso(self, sso):
@@ -29,6 +30,10 @@ class LoginRouter():
 
 
     async def auth(self, request: Request):
-        body = await request.json()
-        username = await self.sso.callback(body)
+        username = await self.sso.callback(request)
         return username
+
+
+    async def get_mails(self, request: Request):
+        messages = await self.sso.search_messages()
+        return messages
