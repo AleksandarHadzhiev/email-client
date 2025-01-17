@@ -24,8 +24,10 @@ class LoginRouter():
         email = body["email"]
         self.service.set_login_factory(email=email)
         sso = self.service.get_sso()
+        print(sso)
         self.set_sso(sso=sso)
         redirect_uri = await sso.login(request=request, email=email)
+        print(self.sso)
         return redirect_uri
 
 
@@ -34,6 +36,6 @@ class LoginRouter():
         return username
 
 
-    async def get_mails(self, request: Request):
+    async def get_mails(self):
         messages = await self.sso.search_messages()
         return messages
