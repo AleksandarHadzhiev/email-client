@@ -14,6 +14,7 @@ export default function Index() {
             const res = await fetch(AUTH_URL, { method: "POST", body: JSON.stringify({ pathname: window.location.href }) });
             const data = await res.json();
             setUsername(data)
+            localStorage.setItem("username", data)
             setTimeout(() => {
                 redirect(data)
             }, 1500);
