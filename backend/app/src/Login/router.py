@@ -1,6 +1,6 @@
 import json
 
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Request, BackgroundTasks
 from app.settings import Settings
 from app.src.Login.service import LoginService
 
@@ -13,6 +13,7 @@ class LoginRouter():
         self.router.add_api_route("/login", self.login, methods=["POST"])
         self.router.add_api_route("/auth", self.auth, methods=["POST"])
         self.router.add_api_route("/get/mails", self.get_mails, methods=["GET"])
+        self.router.add_api_route("/mail/{id}", self.get_mail, methods=["GET"])
 
 
     def set_sso(self, sso):
@@ -24,10 +25,8 @@ class LoginRouter():
         email = body["email"]
         self.service.set_login_factory(email=email)
         sso = self.service.get_sso()
-        print(sso)
         self.set_sso(sso=sso)
         redirect_uri = await sso.login(request=request, email=email)
-        print(self.sso)
         return redirect_uri
 
 
@@ -36,6 +35,11 @@ class LoginRouter():
         return username
 
 
-    async def get_mails(self):
-        messages = await self.sso.search_messages()
+    async def get_mails(self, background_tasks: BackgroundTasks):
+        messages = await self.sso.search_messages(background_tasks)
         return messages
+
+
+    async def get_mail(self, id:int):
+        email = self.sso.read_message(id=id)
+        return email

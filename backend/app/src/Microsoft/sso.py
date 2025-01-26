@@ -1,8 +1,9 @@
 import identity.web
 import requests
 from app.settings import Settings
-from fastapi import  Request
+from fastapi import  Request, BackgroundTasks
 from app.src.Microsoft.service import MicrosoftService
+from app.src.modules.email import Email
 
 class MicrosoftSSO():
     
@@ -11,10 +12,6 @@ class MicrosoftSSO():
         self.settings = settings
         self.service = MicrosoftService()
         self.auth: identity.web.Auth = None
-
-
-    def set_auth(self, auth):
-        self.auth = auth
 
 
     async def login(self, request: Request, email: str):
@@ -32,6 +29,11 @@ class MicrosoftSSO():
         redirec_uri = f'{response["auth_uri"]}&login_hint={email}'
         return redirec_uri
 
+
+    def set_auth(self, auth):
+        self.auth = auth
+
+
     async def logout(self):
         return self.auth.log_out(self.settings.FRONTEND_URL)
 
@@ -46,10 +48,15 @@ class MicrosoftSSO():
         return user["preferred_username"]
 
 
-    async def search_messages(self):
+    async def search_messages(self, background_task: BackgroundTasks):
         token = self.auth.get_token_for_user(self.settings.MICROSOFT_SCOPE)
         endpoint = "https://graph.microsoft.com/v1.0/me/messages"
         headers = {"Authorization": f"Bearer {token['access_token']}"}
         response = requests.get(endpoint,headers=headers)
-        s = response.json()
-        return s
+        emails = response.json()
+        parsed_emails = []
+        for email in emails["value"]:
+            mail: Email = Email(id = email["id"], email_service=None)
+            parsed_email = mail.get_email_content_for_microsoft(incoming_email=email)
+            parsed_emails.append(parsed_email)
+        return parsed_emails
