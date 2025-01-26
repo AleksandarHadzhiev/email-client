@@ -60,3 +60,7 @@ class MicrosoftSSO():
             parsed_email = mail.get_email_content_for_microsoft(incoming_email=email)
             parsed_emails.append(parsed_email)
         return parsed_emails
+
+
+    def send_message(self):
+        return

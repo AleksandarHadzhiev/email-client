@@ -1,6 +1,7 @@
 import base64
 from bs4 import BeautifulSoup
-
+from email.mime.text import MIMEText
+from base64 import urlsafe_b64decode, urlsafe_b64encode
 
 class Email():    
     def __init__(self, id, email_service):
@@ -10,6 +11,15 @@ class Email():
         self.subject = ""
         self.date = ""
 
+
+    def build_message(self, body):
+        print(body)
+        message = MIMEText(body["body"])
+        message['To'] = body["to"]
+        message['From'] = body["from"]
+        message['Subject'] = body["subject"]
+        return {'raw': urlsafe_b64encode(message.as_bytes()).decode()}
+        
 
     def get_email_content_for_microsoft(self, incoming_email):
         body = incoming_email["body"]["content"]
@@ -73,6 +83,8 @@ class Email():
         if mime_type == 'multipart/alternative':
             return self._loop_through_parts(payload=payload)
         elif mime_type == "multipart/mixed":
+            return self._loop_through_parts(payload=payload)
+        elif mime_type == "multipart/report":
             return self._loop_through_parts(payload=payload)
         elif mime_type != 'multipart/alternative':
             return self._get_body_through_decoding(part=payload)

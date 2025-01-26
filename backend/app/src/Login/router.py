@@ -14,10 +14,16 @@ class LoginRouter():
         self.router.add_api_route("/auth", self.auth, methods=["POST"])
         self.router.add_api_route("/get/mails", self.get_mails, methods=["GET"])
         self.router.add_api_route("/mail/{id}", self.get_mail, methods=["GET"])
+        self.router.add_api_route("/send", self.send_message, methods=["POST"])
 
 
     def set_sso(self, sso):
         self.sso = sso
+
+
+    async def send_message(self, request: Request):
+        body = await request.json()
+        return self.sso.send_message(body=body)
 
 
     async def login(self, request: Request):
