@@ -1,3 +1,4 @@
+import base64
 import json
 import requests
 from datetime import datetime, timedelta
@@ -8,6 +9,7 @@ from google.oauth2.credentials import Credentials
 from fastapi import Request
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from app.src.modules.email import Email
 
 class GoogleService():
     
@@ -89,3 +91,21 @@ class GoogleService():
         except HttpError as error:
             raise error
         return service
+    
+    
+    def get_email_data(self, id, email_service):
+        email = Email(id=id, email_service=email_service)
+        formated_email = email.get_email_content_for_gmail()
+        return formated_email
+
+
+    def _get_structured_email(self, sender, date, subject, id, payload):
+        email = Email(
+                sender=sender,
+                date=date,
+                subject=subject,
+                id=id
+                
+            )
+        email.set_full_body(payload=payload)
+        return email.get_email_content()
