@@ -1,3 +1,4 @@
+import json
 import identity.web
 import requests
 from app.settings import Settings
@@ -62,5 +63,32 @@ class MicrosoftSSO():
         return parsed_emails
 
 
-    def send_message(self):
-        return
+    def send_message(self, body):
+        token = self.auth.get_token_for_user(self.settings.MICROSOFT_SCOPE)
+        print(token)
+        endpoint = "https://graph.microsoft.com/v1.0/me/sendMail"
+        headers = {"Authorization": f"Bearer {token['access_token']}", "Content-Type": "application/json"}
+        j = {
+                "message": {
+                    "subject": body["subject"],
+                    "body": {
+                        "contentType": "text",
+                        "content": body["body"]
+                        },
+                    "toRecipients": [
+                        {
+                            "emailAddress": {
+                            "address":  body["to"]
+              }
+            }
+        ]
+    },
+    "saveToSentItems": "true"
+            }
+        
+        response = requests.post(endpoint,headers=headers,json=j)
+        print(response)
+        if response.status_code == 202:
+            return 'SENT'
+        else:
+            print(f"Failed to send email. Status code: {response.status_code}, Error: {response.text}")

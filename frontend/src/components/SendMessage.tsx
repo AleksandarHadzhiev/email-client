@@ -22,7 +22,7 @@ export default function SendMessage({ setSendMessageIsActivated }) {
 
         await fetch(SEND_URL, { method: "POST", body: JSON.stringify(message) }).then(async (res) => {
             const data = await res.json()
-            const labels = data.labelIds
+            const labels = data == "SENT" ? data : data.labelIds
             if (labels.includes('SENT')) {
                 console.log(data)
                 setSendMessageIsActivated(false)
