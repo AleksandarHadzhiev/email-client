@@ -1,4 +1,12 @@
-export default function MailHeader() {
+type Email = {
+    from: string;
+    subject: string;
+    date: string;
+    body: string;
+    body_preview: string;
+};
+//@ts-ignore
+export default function MailHeader({ email }) {
     return (
         <div className="flex border-l-4 border-blue-500">
             <div className="w-16 flex justify-center items-center align-center">
@@ -7,9 +15,12 @@ export default function MailHeader() {
                 </svg>
             </div>
             <div className="w-full h-full flex-row ml-2">
-                <h1 className="mb-1">Sender</h1>
-                <h3 className="mb-1">Title</h3>
-                <p>Body</p>
+                <p className="mb-1 text-lg">{email.from}</p>
+                <div className="mb-1 flex flex-row justify-between">
+                    <p className="text-sm">{email.subject}</p>
+                    <p className="mr-2 text-xs">{email.Date}</p>
+                </div>
+                <p className="text-xs">{email.body_preview}</p>
             </div>
         </div>
     )
