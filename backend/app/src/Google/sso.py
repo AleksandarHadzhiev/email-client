@@ -85,3 +85,10 @@ class GoogleSSO:
     def read_message(self, id:int):
         email = self.google_service.get_email_data(id=id)
         return email
+
+
+    def send_message(self, body):
+        return self.email_service.users().messages().send(
+            userId="me",
+            body = self.google_service.send_message(email_service=self.email_service, body=body)
+        ).execute()

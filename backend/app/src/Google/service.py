@@ -109,3 +109,8 @@ class GoogleService():
             )
         email.set_full_body(payload=payload)
         return email.get_email_content()
+
+
+    def send_message(self, email_service, body):
+        email = Email("2123", email_service=email_service)
+        return email.build_message(body)
