@@ -84,6 +84,8 @@ class Email():
             return self._loop_through_parts(payload=payload)
         elif mime_type == "multipart/mixed":
             return self._loop_through_parts(payload=payload)
+        elif mime_type == "multipart/report":
+            return self._loop_through_parts(payload=payload)
         elif mime_type != 'multipart/alternative':
             return self._get_body_through_decoding(part=payload)
 

@@ -22,7 +22,12 @@ export default function SendMessage({ setSendMessageIsActivated }) {
 
         await fetch(SEND_URL, { method: "POST", body: JSON.stringify(message) }).then(async (res) => {
             const data = await res.json()
-            console.log(data)
+            const labels = data.labelIds
+            if (labels.includes('SENT')) {
+                console.log(data)
+                setSendMessageIsActivated(false)
+                alert("Success")
+            }
         }).catch((err) => {
             console.log(err)
         })
