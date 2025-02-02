@@ -162,14 +162,31 @@ class Email():
     def _loop_through_parts(self,payload):
         parts = payload["parts"]
         body = ""
-        part_index = 0
-        # Multiple parts, so have to go through all of them.
-        if len(parts) > 1:
-            part_index = 1
-        part = parts[part_index]
-        soup = self._get_body_through_decoding(part=part)
-        body += str(soup)
+        for part in parts:
+            body_of_part = part["body"]
+            if 'attachmentId' in body_of_part:
+                print(part)
+                self._get_attachment(part=part)
+            else:
+                soup = self._get_body_through_decoding(part=part)
+            body = str(soup)
         return body
+
+
+    def _get_attachment(self, part):
+        payload_body = part["body"]
+        data = payload_body["attachmentId"]
+        headers_message = self.email_service.users().messages().attachments().get(userId='me', messageId=self.id,id=data).execute()
+        data = headers_message["data"]
+        data = data.replace("-","+").replace("_","/")
+        decoded = base64.b64decode(data)
+        decoded = decoded.decode()
+        attachment = {
+            "name":  part['filename'],
+            "type": part["mimeType"],
+            "data": decoded
+        }
+        self.attachments.append(attachment)
 
 
     def _get_body_through_decoding(self,part): 
