@@ -73,14 +73,38 @@ class Email():
         self.date = incoming_email["receivedDateTime"]
         self.sender = incoming_email["sender"]["emailAddress"]["name"] + "<" + incoming_email["sender"]["emailAddress"]["address"] + ">"
         self.subject = incoming_email["subject"]
+        self._get_attachments_for_microsoft_mail(incoming_email=incoming_email, headers=headers)
         return {
             "from": self.sender,
             "date": self.date,
             "subject": self.subject,
             "body_preview": self.body_preview,
-            "body": self.body
+            "body": self.body,
+            "attachments": self.attachments
         }
-    
+
+
+    def _get_attachments_for_microsoft_mail(self, incoming_email, headers):
+        id = incoming_email["id"]
+        endpoint = f"https://graph.microsoft.com/v1.0/me/messages/{id}/attachments"
+        print(id)
+        print(incoming_email['hasAttachments'])
+        if 'hasAttachments' in incoming_email and incoming_email['hasAttachments'] is True:
+            response = requests.get(endpoint,headers=headers)
+            data = response.json()
+            for attachment in data["value"]:
+                print(attachment)
+                content = attachment['contentBytes']
+                decoded = base64.b64decode(content)
+                decoded = decoded.decode()
+                _attachment = {
+                    "name":  attachment['name'],
+                    "type": attachment["contentType"],
+                    "data": decoded
+                }
+                self.attachments.append(_attachment)
+                print(_attachment)
+
 
     def get_email_content_for_gmail(self):
         headers_message = self.email_service.users().messages().get(userId='me', id=self.id).execute()
@@ -90,7 +114,8 @@ class Email():
             "date": self.date,
             "subject": self.subject,
             "body_preview": self.body_preview,
-            "body": self.body
+            "body": self.body,
+            "attachments": self.attachments
         }
 
 

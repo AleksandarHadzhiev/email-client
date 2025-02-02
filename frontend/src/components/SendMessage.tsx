@@ -1,24 +1,50 @@
-import { useState } from "react"
+
+import { promises as fs } from 'fs';
+import { useRef, useState } from 'react';
 
 //@ts-ignore
 export default function SendMessage({ setSendMessageIsActivated }) {
-
+    console.log("CONSTANT")
     const [to, setTo] = useState("")
     const [subject, setSubject] = useState("")
     const [body, setBody] = useState("")
     const SEND_URL = "http://localhost:8000/send"
     const username = localStorage.getItem("username") || ""
+    const fileInput = useRef<HTMLInputElement>(null)
+    let _files: {}[] = []
 
-    // const [subject, setSubject] = useState("")
+    async function uploadAttachment(e: React.ChangeEvent<HTMLInputElement>) {
+        const files = e.target.files
+        const file = files ? files[0] : null
+        if (file != null) {
+            console.log(file)
+            const fileReader = new FileReader()
+            fileReader.readAsBinaryString(file)
+            fileReader.onload = e => {
+                const content = e.target?.result
+                console.log(content)
+                const _file = {
+                    name: file.name,
+                    type: file.type,
+                    content: content
+                }
+                console.log(_file)
+                _files.push(_file)
+            }
+        }
+    }
 
     const sendMessage = async () => {
+        console.log(_files)
         const message = {
             to: to,
             from: username,
             date: new Date().toLocaleString(),
             subject: subject,
-            body: body
+            body: body,
+            attachments: _files
         }
+        console.log(message)
 
         await fetch(SEND_URL, { method: "POST", body: JSON.stringify(message) }).then(async (res) => {
             const data = await res.json()
@@ -32,8 +58,6 @@ export default function SendMessage({ setSendMessageIsActivated }) {
             console.log(err)
         })
     }
-
-
 
     return (
         <section
@@ -72,8 +96,22 @@ export default function SendMessage({ setSendMessageIsActivated }) {
                 ></textarea>
             </main>
             <footer className="row-span-1 bg-gray-800 text-white grid grid-cols-10">
-                <div className="col-span-8"></div>
-                <button className="col-span-1 m-1" onClick={() => { sendMessage() }}>
+                <div
+                    className="col-span-1 flex items-center justify-between hover:text-blue-400">
+                    <label htmlFor="file-upload">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                        </svg></label>
+                    <input
+                        onChange={uploadAttachment}
+                        ref={fileInput}
+                        style={{ display: 'none' }}
+                        type="file"
+                        id="file-upload"
+                        multiple />
+                </div>
+                <div className="col-span-7"></div>
+                <button className="col-span-1 flex items-center justify-between hover:text-blue-400" onClick={() => { sendMessage() }}>
                     <svg
                         className="h-8 w-8 ml-2"
                         viewBox="0 0 24 24"
