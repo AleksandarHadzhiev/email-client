@@ -1,7 +1,10 @@
 import base64
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
-from base64 import urlsafe_b64decode, urlsafe_b64encode
+from base64 import urlsafe_b64encode
+import requests
 
 class Email():    
     def __init__(self, id, email_service):
@@ -10,33 +13,95 @@ class Email():
         self.sender = ""
         self.subject = ""
         self.date = ""
+        self.attachments = []
 
 
     def build_message(self, body):
-        print(body)
-        message = MIMEText(body["body"])
+        if 'attachments' in body:
+            message = self._attach_attachments(body=body)
+        else:
+            message = self._message_without_attachments(body=body)
+        return {'raw': urlsafe_b64encode(message.as_bytes()).decode()}  
+
+
+    def _attach_attachments(self, body):
+        attachments = body['attachments']
+        message = MIMEMultipart()
+        self._set_basic_info(message=message, body=body)
+        message.attach(MIMEText(body["body"]))
+        for attachment in attachments:
+            self._generate_attachment(attachment=attachment, message=message)
+        return message
+
+
+    def _set_basic_info(self, message, body):
         message['To'] = body["to"]
         message['From'] = body["from"]
         message['Subject'] = body["subject"]
-        return {'raw': urlsafe_b64encode(message.as_bytes()).decode()}
-        
 
-    def get_email_content_for_microsoft(self, incoming_email):
+
+    def _generate_attachment(self, attachment, message):
+        main_type, sub_type = attachment["type"].split('/', 1)
+        content = attachment["content"]
+        if main_type == 'text':
+            msg = MIMEText(content, _subtype =sub_type)
+        elif main_type == "image":
+            content = str(content).encode() 
+            msg = MIMEImage(content, _subtype =sub_type)
+        msg.add_header('Content-Disposition', 'attachment', filename=attachment["name"])
+        message.attach(msg)
+
+
+    def _message_without_attachments(self, body):
+        message = MIMEText(body["body"])
+        self._set_basic_info(message=message, body=body)
+        return message
+
+
+    def get_email_content_for_microsoft(self, incoming_email, headers):
         body = incoming_email["body"]["content"]
         soup = BeautifulSoup(body, "lxml")
-        self.body = str(soup.body)
-        self.body_preview = incoming_email["bodyPreview"]
-        self.date = incoming_email["receivedDateTime"]
-        self.sender = incoming_email["sender"]["emailAddress"]["name"] + "<" + incoming_email["sender"]["emailAddress"]["address"] + ">"
-        self.subject = incoming_email["subject"]
+        self._set_email_information(soup=soup, incoming_email=incoming_email)
+        self._check_if_email_has_attachments(incoming_email=incoming_email, headers=headers)
         return {
             "from": self.sender,
             "date": self.date,
             "subject": self.subject,
             "body_preview": self.body_preview,
-            "body": self.body
+            "body": self.body,
+            "attachments": self.attachments
         }
-    
+
+
+    def _set_email_information(self, soup, incoming_email):
+        self.body = str(soup.body)
+        self.body_preview = incoming_email["bodyPreview"]
+        self.date = incoming_email["receivedDateTime"]
+        self.sender = incoming_email["sender"]["emailAddress"]["name"] + "<" + incoming_email["sender"]["emailAddress"]["address"] + ">"
+        self.subject = incoming_email["subject"]
+
+
+    def _check_if_email_has_attachments(self, incoming_email, headers):
+        id = incoming_email["id"]
+        endpoint = f"https://graph.microsoft.com/v1.0/me/messages/{id}/attachments"
+        if 'hasAttachments' in incoming_email and incoming_email['hasAttachments'] is True:
+            self._set_attachments(endpoint=endpoint, headers=headers)
+
+
+    def _set_attachments(self, endpoint, headers):
+        response = requests.get(endpoint,headers=headers)
+        data = response.json()
+        for attachment in data["value"]:
+            content = attachment['contentBytes']
+            decoded = base64.b64decode(content)
+            decoded = decoded.decode()
+            _attachment = {
+                "name":  attachment['name'],
+                "type": attachment["contentType"],
+                "data": decoded
+            }
+            self.attachments.append(_attachment)
+
 
     def get_email_content_for_gmail(self):
         headers_message = self.email_service.users().messages().get(userId='me', id=self.id).execute()
@@ -46,7 +111,8 @@ class Email():
             "date": self.date,
             "subject": self.subject,
             "body_preview": self.body_preview,
-            "body": self.body
+            "body": self.body,
+            "attachments": self.attachments
         }
 
 
@@ -93,14 +159,31 @@ class Email():
     def _loop_through_parts(self,payload):
         parts = payload["parts"]
         body = ""
-        part_index = 0
-        # Multiple parts, so have to go through all of them.
-        if len(parts) > 1:
-            part_index = 1
-        part = parts[part_index]
-        soup = self._get_body_through_decoding(part=part)
-        body += str(soup)
+        for part in parts:
+            body_of_part = part["body"]
+            if 'attachmentId' in body_of_part:
+                print(part)
+                self._get_attachment(part=part)
+            else:
+                soup = self._get_body_through_decoding(part=part)
+            body = str(soup)
         return body
+
+
+    def _get_attachment(self, part):
+        payload_body = part["body"]
+        data = payload_body["attachmentId"]
+        headers_message = self.email_service.users().messages().attachments().get(userId='me', messageId=self.id,id=data).execute()
+        data = headers_message["data"]
+        data = data.replace("-","+").replace("_","/")
+        decoded = base64.b64decode(data)
+        decoded = decoded.decode()
+        attachment = {
+            "name":  part['filename'],
+            "type": part["mimeType"],
+            "data": decoded
+        }
+        self.attachments.append(attachment)
 
 
     def _get_body_through_decoding(self,part): 

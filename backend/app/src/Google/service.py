@@ -1,4 +1,3 @@
-import base64
 import json
 import requests
 from datetime import datetime, timedelta
@@ -6,10 +5,12 @@ from urllib import parse
 from app.settings import Settings
 from oauthlib.oauth2 import WebApplicationClient
 from google.oauth2.credentials import Credentials
-from fastapi import Request
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from app.src.modules.email import Email
+import functools
+
+
 
 class GoogleService():
     
@@ -17,7 +18,7 @@ class GoogleService():
         self.settings = settings
         self.client = client
         self.token_url = "https://accounts.google.com/o/oauth2/token"
-    
+        get_email_data = functools.cache(self.get_email_data)
     
     def get_google_provider_cfg(self):
         return requests.get(self.settings.DISCOVERY_URL).json()
@@ -97,18 +98,6 @@ class GoogleService():
         email = Email(id=id, email_service=email_service)
         formated_email = email.get_email_content_for_gmail()
         return formated_email
-
-
-    def _get_structured_email(self, sender, date, subject, id, payload):
-        email = Email(
-                sender=sender,
-                date=date,
-                subject=subject,
-                id=id
-                
-            )
-        email.set_full_body(payload=payload)
-        return email.get_email_content()
 
 
     def send_message(self, email_service, body):
