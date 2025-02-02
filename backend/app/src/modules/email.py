@@ -1,7 +1,14 @@
 import base64
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
-from base64 import urlsafe_b64decode, urlsafe_b64encode
+from base64 import urlsafe_b64encode
+from fastapi.responses import FileResponse
+
+import mimetypes
+
+import requests
 
 class Email():    
     def __init__(self, id, email_service):
@@ -10,18 +17,55 @@ class Email():
         self.sender = ""
         self.subject = ""
         self.date = ""
+        self.attachments = []
 
 
     def build_message(self, body):
         print(body)
+        
+        if 'attachments' in body:
+            message = self._attach_attachments(body=body)
+        else:
+            message = self._message_without_attachments(body=body)
+        return {'raw': urlsafe_b64encode(message.as_bytes()).decode()}  
+
+
+    def _message_without_attachments(self, body):
         message = MIMEText(body["body"])
+        self._set_basic_info(message=message, body=body)
+        return message
+
+
+    def _set_basic_info(self, message, body):
         message['To'] = body["to"]
         message['From'] = body["from"]
         message['Subject'] = body["subject"]
-        return {'raw': urlsafe_b64encode(message.as_bytes()).decode()}
-        
+ 
 
-    def get_email_content_for_microsoft(self, incoming_email):
+    def _attach_attachments(self, body):
+        attachments = body['attachments']
+        message = MIMEMultipart()
+        self._set_basic_info(message=message, body=body)
+        message.attach(MIMEText(body["body"]))
+        for attachment in attachments:
+            self._generate_attachment(attachment=attachment, message=message)
+        return message  
+
+
+    def _generate_attachment(self, attachment, message):
+        main_type, sub_type = attachment["type"].split('/', 1)
+        content = attachment["content"]
+        print(content)
+        if main_type == 'text':
+            msg = MIMEText(content, _subtype =sub_type)
+        elif main_type == "image":
+            content = str(content).encode() 
+            msg = MIMEImage(content, _subtype =sub_type)
+        msg.add_header('Content-Disposition', 'attachment', filename=attachment["name"])
+        message.attach(msg)
+
+
+    def get_email_content_for_microsoft(self, incoming_email, headers):
         body = incoming_email["body"]["content"]
         soup = BeautifulSoup(body, "lxml")
         self.body = str(soup.body)
