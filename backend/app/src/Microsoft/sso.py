@@ -1,3 +1,4 @@
+import base64
 import json
 import identity.web
 import requests
@@ -58,36 +59,17 @@ class MicrosoftSSO():
         parsed_emails = []
         for email in emails["value"]:
             mail: Email = Email(id = email["id"], email_service=None)
-            parsed_email = mail.get_email_content_for_microsoft(incoming_email=email)
+            parsed_email = mail.get_email_content_for_microsoft(incoming_email=email, headers=headers)
             parsed_emails.append(parsed_email)
         return parsed_emails
 
 
     def send_message(self, body):
         token = self.auth.get_token_for_user(self.settings.MICROSOFT_SCOPE)
-        print(token)
         endpoint = "https://graph.microsoft.com/v1.0/me/sendMail"
         headers = {"Authorization": f"Bearer {token['access_token']}", "Content-Type": "application/json"}
-        j = {
-                "message": {
-                    "subject": body["subject"],
-                    "body": {
-                        "contentType": "text",
-                        "content": body["body"]
-                        },
-                    "toRecipients": [
-                        {
-                            "emailAddress": {
-                            "address":  body["to"]
-              }
-            }
-        ]
-    },
-    "saveToSentItems": "true"
-            }
-        
-        response = requests.post(endpoint,headers=headers,json=j)
-        print(response)
+        email_body = self.service.generate_email_body(body=body)
+        response = requests.post(endpoint,headers=headers,json=email_body)
         if response.status_code == 202:
             return 'SENT'
         else:
