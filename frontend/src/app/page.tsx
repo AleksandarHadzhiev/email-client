@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from "react";
-import Navbar from "@/components/Navigation";
-import Sidebar from "@/components/Sidebar";
+import Navbar from "@/components/navigation";
+import Sidebar from "@/components/sidebar";
 import Login from "@/components/Login";
 import MailBody from "@/components/MailBody";
 export default function Home() {
