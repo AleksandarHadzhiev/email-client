@@ -1,3 +1,7 @@
-class Todo():
-    def __init__(self, ):
-        pass
+from pydantic import BaseModel
+
+class ToDo(BaseModel):
+    email: str
+    title: str
+    description: str
+    due_date: str
