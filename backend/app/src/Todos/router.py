@@ -11,8 +11,6 @@ from app.src.Todos.service import ToDoService
 db = DBConnector()
 SessionDep = Annotated[Session, Depends(db.get_session)]
 
-ONLY_TITLE_PROVIDED = 2 # Will be changed to one
-
 class TodoRouter():
     
     def __init__(self, settings:Settings):
@@ -29,19 +27,12 @@ class TodoRouter():
 
     async def create(self, request: Request, session: SessionDep):
         body = await request.json()
-        number_of_fields = len(body)
-        if number_of_fields == ONLY_TITLE_PROVIDED: 
-            todo = TodoModel(
-                email=body["email"], # Will be changed to email from url
-                title=body["title"]
-            )
-        else:
-            todo = TodoModel(
-                email=body["email"],
-                title=body["title"],
-                description=body["description"],
-                due_date=body["due_date"],
-            )
+        todo = TodoModel(
+            email=body["email"],
+            title=body["title"],
+            description=body["description"],
+            due_date=body["due_date"],
+        )
         session.add(todo)
         session.commit()
         session.refresh(todo)
