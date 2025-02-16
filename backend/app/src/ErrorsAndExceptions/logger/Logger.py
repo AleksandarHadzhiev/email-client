@@ -14,18 +14,8 @@ class SingletonMeta(type):
 class CustomLogger(metaclass=SingletonMeta):
     
     def log_error(self, error=None):
-        
-        current_datetime = datetime.now()
-        formated_datetime = current_datetime.strftime("%d/%m/%Y %H:%M:%S")
-        
-        error_data = {
-            error["type"]: {
-                "time": formated_datetime,
-                "message": error["message"],
-                "status_code": error["status_code"],
-                "endpoint": error["endpoint"]
-            }
-        }
+
+        error_data = error
 
         with open("errors.json") as f:
             json_data = json.load(f)

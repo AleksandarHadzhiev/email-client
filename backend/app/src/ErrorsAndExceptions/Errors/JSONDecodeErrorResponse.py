@@ -1,6 +1,6 @@
 import json
 from fastapi import Response, status
-from app.src.Errors.logger.Logger import CustomLogger 
+from app.src.ErrorsAndExceptions.logger.Logger import CustomLogger 
 class JSONDecodeErrorResponse():
     
     def __init__(self, msg, endpoint):

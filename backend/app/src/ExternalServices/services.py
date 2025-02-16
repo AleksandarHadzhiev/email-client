@@ -1,7 +1,7 @@
-from fastapi import HTTPException, Request, status
+from fastapi import Request
 from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
 from app.src.Factory.ExternalServiceFactory import ExternalServiceFactory
-
+from app.src.ErrorsAndExceptions.Exceptions.InputExceptions import NotValidEmailFormatException
 
 class ExternalServicesService():
     def __init__(self, settings):
@@ -13,27 +13,21 @@ class ExternalServicesService():
 
 
     def login(self, email: str,request: Request):
-        email = self._validate_email(email=email)
+        email = self._get_email_if_valid_email_format(email=email)
         external_service = self._build_external_service(email=email)
         redirect_uri = external_service.login(email=email, request=request)
         return redirect_uri
 
 
-    def _validate_email(self, email: str):
+    def _get_email_if_valid_email_format(self, email: str):
         if "@" not in email:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Invalid email",
-                headers={
-                    "X-Error": "Invalid email"
-                }
-            )
+            raise NotValidEmailFormatException("The emal format is invalid.")
         return email
 
 
     def _build_external_service(self, email)  -> ExternalServiceProvider:
         factory = ExternalServiceFactory(settings=self.settings, email=email)
-        external_service = factory.get_external_service_based_on_domain()
+        external_service = factory.get_external_service_if_in_supported_domain()
         self._set_external_service(external_service=external_service)
         return external_service
 

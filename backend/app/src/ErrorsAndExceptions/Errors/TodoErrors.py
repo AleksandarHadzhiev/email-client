@@ -1,7 +1,7 @@
+from datetime import datetime
 import json
-from typing import Protocol
 from fastapi import Response
-from app.src.Errors.logger.Logger import CustomLogger
+from app.src.ErrorsAndExceptions.logger.Logger import CustomLogger
 
 class ErrorResponse():
     def __init__(self, detail, endpoint, status):
@@ -22,7 +22,7 @@ class ErrorResponse():
         return Response(content=json.dumps({"error": self.detail}), status_code=self.status)
     
 
-class Error(Protocol):
+class Error():
     def __init__(self, detail, endpoint, status):
         self.detail = detail
         self.endpoint = endpoint
@@ -36,11 +36,14 @@ class Error(Protocol):
 
 
     def get_error(self):
+        current_datetime = datetime.now()
+        formated_datetime = current_datetime.strftime("%d/%m/%Y %H:%M:%S")
+        
         error = {
             "type": self.type,
             "message": self.detail,
             "status_code": self.status,
-            "endpoint": self.endpoint
+            "endpoint": self.endpoint,
+            "time": formated_datetime,
         }
-        self.logger.log_error(error=error)
-        return Response(content=json.dumps({"error": self.detail}), status_code=self.status)
+        return error

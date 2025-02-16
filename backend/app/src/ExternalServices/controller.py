@@ -1,11 +1,11 @@
 import json
 import logging
 from fastapi import Request, Response, status
-from fastapi.exceptions import HTTPException
+from app.src.ErrorsAndExceptions.Exceptions.InputExceptions import NotValidEmailFormatException, EmailNotInSupportedDomainsException
 from googleapiclient.http import HttpError
 from app.src.ExternalServices.services import ExternalServicesService
-from app.src.Errors.TodoErrors import ErrorResponse
-
+from app.src.ErrorsAndExceptions.Errors.TodoErrors import ErrorResponse
+from app.src.ErrorsAndExceptions.Errors.InputErrors import InvalidEmail, UnsupportedDomainError
 class ExternalServicesController():
     def __init__(self, settings):
         self.settings = settings
@@ -22,14 +22,22 @@ class ExternalServicesController():
                 content=json.dumps({"redirect": redirect_uri}),
                 status_code=status.HTTP_200_OK
             )
-        except HTTPException as e:
+        except NotValidEmailFormatException as e:
             logging.error(e)
-            return ErrorResponse(
-                detail=  e.detail,
-                endpoint={"path":f"/login/{email}", "method": "POST"},
-                status=e.status_code
-            ).response()
-
+            return InvalidEmail(
+                input_type="email",
+                error_message="Invalid email, check for missing @.",
+                endpoint={"path":f"/login", "method": "POST", "body": {"data": email}},
+                status=status.HTTP_400_BAD_REQUEST
+            ).get_error()
+        except EmailNotInSupportedDomainsException as e:
+            logging.error(e)
+            return UnsupportedDomainError(
+                input_type="email",
+                error_message="The used domain is not part of our support. We support gmail and outlook only.",
+                endpoint={"path":f"/login", "method": "POST", "body": {"data": email}},
+                status=status.HTTP_400_BAD_REQUEST
+            ).get_error()
 
 
     async def auth(self, request: Request):

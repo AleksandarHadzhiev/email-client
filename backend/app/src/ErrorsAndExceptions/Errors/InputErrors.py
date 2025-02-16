@@ -1,5 +1,6 @@
-from fastapi import status
-from app.src.Errors.TodoErrors import Error
+import json
+from fastapi import Response, status
+from app.src.ErrorsAndExceptions.Errors.TodoErrors import Error
 
 
 class InputError(Error):
@@ -27,7 +28,10 @@ class InvalidEmail(InputError):
 
 
     def get_error(self):
-        return super().get_error()
+        error = super().get_error()
+        error["input_type"] = self.input_type
+        self.logger.log_error(error=error)
+        return Response(content=json.dumps({"error": self.detail}), status_code=self.status)
 
 
 class UnsupportedDomainError(InputError):
@@ -39,4 +43,9 @@ class UnsupportedDomainError(InputError):
 
 
     def get_error(self):
-        return super().get_error()
+        error = super().get_error()
+        error["input_type"] = self.input_type
+        self.logger.log_error(error=error)
+        return Response(content=json.dumps({"error": self.detail}), status_code=self.status)
+
+

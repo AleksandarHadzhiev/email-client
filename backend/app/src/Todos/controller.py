@@ -7,8 +7,8 @@ from sqlmodel import Session
 from app.db import DBConnector
 from app.settings import Settings
 from app.src.Todos.service import ToDoService
-from app.src.Errors.JSONDecodeErrorResponse import JSONDecodeErrorResponse
-from app.src.Errors.TodoErrors import ErrorResponse
+from app.src.ErrorsAndExceptions.Errors.JSONDecodeErrorResponse import JSONDecodeErrorResponse
+from app.src.ErrorsAndExceptions.Errors.TodoErrors import ErrorResponse
 
 db = DBConnector()
 SessionDep = Annotated[Session, Depends(db.get_session)]
