@@ -8,8 +8,6 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from app.src.modules.email import Email
-import functools
-
 
 
 class GoogleService():
@@ -18,8 +16,8 @@ class GoogleService():
         self.settings = settings
         self.client = client
         self.token_url = "https://accounts.google.com/o/oauth2/token"
-        get_email_data = functools.cache(self.get_email_data)
-    
+
+
     def get_google_provider_cfg(self):
         return requests.get(self.settings.DISCOVERY_URL).json()
 
@@ -77,6 +75,7 @@ class GoogleService():
             expiry=expires_in,
             scopes=self.settings.GOOGLE_SCOPES
         )
+
 
     def calculate_expiry(self):
         now = datetime.now()

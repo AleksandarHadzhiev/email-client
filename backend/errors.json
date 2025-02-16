@@ -1,0 +1,68 @@
+{
+    "errors": [
+        {
+            "type": "InvalidEmail",
+            "message": "Invalid email, check for missing @.",
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "data": "asd.bv"
+                }
+            },
+            "time": "16/02/2025 11:57:41",
+            "input_type": [
+                "email"
+            ]
+        },
+        {
+            "type": "UnsupportedDomainError",
+            "message": "The used domain is not part of our support. We support gmail and outlook only.",
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "data": "asle@asd.bv"
+                }
+            },
+            "time": "16/02/2025 11:57:22",
+            "input_type": [
+                "email"
+            ]
+        },
+        {
+            "type": "UnsupportedDomainError",
+            "message": "The used domain is not part of our support. We support gmail and outlook only.",
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "data": "ivan@gmail.nl"
+                }
+            },
+            "time": "16/02/2025 11:55:21",
+            "input_type": [
+                "email"
+            ]
+        },
+        {
+            "type": "UnsupportedDomainError",
+            "message": "The used domain is not part of our support. We support gmail and outlook only.",
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "data": "aleks@abv.bg"
+                }
+            },
+            "time": "16/02/2025 11:53:28",
+            "input_type": [
+                "email"
+            ]
+        }
+    ]
+}

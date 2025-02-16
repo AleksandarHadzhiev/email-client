@@ -1,21 +1,19 @@
-import json
-from fastapi import Request, BackgroundTasks, Response
+from fastapi import Request
 from oauthlib.oauth2 import WebApplicationClient
-from app.settings import Settings
 from .service import GoogleService
+from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
 
-
-class GoogleSSO:
-
-    def __init__(self, settings:Settings):
-        self.settings = settings
+class Google(ExternalServiceProvider):
+    
+    def __init__(self, settings):
+        super().__init__(settings)
         self.client = WebApplicationClient(settings.GOOGLE_CLIENT_ID)
         self.google_service = GoogleService(settings=self.settings, client=self.client) 
         self.fetched_messages = []
         self.next_page_token = ""
 
 
-    async def login(self, request: Request=None, email: str=None):
+    async def login(self, email: str=None, request: Request=None):
         google_provider_cfg = self.google_service.get_google_provider_cfg()
         authorization_enpoint = google_provider_cfg["authorization_endpoint"]
         request_uri = self.client.prepare_request_uri(
@@ -38,13 +36,20 @@ class GoogleSSO:
         return user_info.json()["email"]
 
 
-    async def search_messages(self, background_tasks: BackgroundTasks):
+    async def send_email(self, data):
+        return self.email_service.users().messages().send(
+            userId="me",
+            body = self.google_service.send_message(email_service=self.email_service, body=data)
+        ).execute()
+
+
+    async def get_emails(self):
         result = self._get_message_id_from_google()
         messages = self._fetch_all_messages(result=result)
         emails = self._read_messages_to_get_payload(messages=messages)
         self._extend_fetched_messages_until_length_fifty(emails=emails)
         self._set_next_page_token(result=result)
-        return Response(content=json.dumps(self.fetched_messages), media_type="json")
+        return self.fetched_messages
 
 
     def _get_message_id_from_google(self):
@@ -82,13 +87,6 @@ class GoogleSSO:
             self.next_page_token = ""
 
 
-    def read_message(self, id:int):
-        email = self.google_service.get_email_data(id=id)
+    def get_email_by_id(self, id):
+        email = self.google_service.get_email_data(id=id, email_service=self.email_service)
         return email
-
-
-    def send_message(self, body):
-        return self.email_service.users().messages().send(
-            userId="me",
-            body = self.google_service.send_message(email_service=self.email_service, body=body)
-        ).execute()
