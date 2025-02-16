@@ -34,15 +34,6 @@ class ExternalServicesService():
     def _build_external_service(self, email)  -> ExternalServiceProvider:
         factory = ExternalServiceFactory(settings=self.settings, email=email)
         external_service = factory.get_external_service_based_on_domain()
-        if external_service is None:
-            print(external_service)
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Domain is not supported in the app",
-                headers={
-                    "X-Error": "Domain is not supported"
-                }
-            )
         self._set_external_service(external_service=external_service)
         return external_service
 

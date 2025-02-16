@@ -2,6 +2,17 @@
     "errors": [
         {
             "Exception": {
+                "time": "16/02/2025 08:21:32",
+                "message": "Domain is not supported in the app",
+                "status_code": 401,
+                "endpoint": {
+                    "path": "/login/aleks@abv.bg",
+                    "method": "POST"
+                }
+            }
+        },
+        {
+            "Exception": {
                 "time": "15/02/2025 12:06:17",
                 "message": "Domain is not supported in the app",
                 "status_code": 401,

@@ -1,3 +1,4 @@
+from fastapi import HTTPException, status
 from app.src.Google.sso import Google
 from app.src.Microsoft.sso import Microsoft
 
@@ -17,4 +18,10 @@ class ExternalServiceFactory():
         for domain in domains:
             if self.email.endswith(domain):
                 return self.supported_domains[domain]
-        return None
+        raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Domain is not supported in the app",
+                headers={
+                    "X-Error": "Domain is not supported"
+                }
+            )
