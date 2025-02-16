@@ -1,5 +1,5 @@
 import unittest
-from app.src.Factory.LoginFactory import LoginFactory
+from app.src.Factory.ExternalServiceFactory import LoginFactory
 from app.src.Errors.LoginFactoryErrors import NotSupportedDomain, NotValidEmail
 from app.settings import Settings
 
