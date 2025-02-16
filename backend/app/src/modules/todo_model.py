@@ -9,3 +9,12 @@ class TodoModel(SQLModel, table=True):
     status: str = Field(default="In Progress", index=True)
     due_date: str = Field(default=None, index=True)
     
+    def get_formatted(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "title": self.title,
+            "description": self.description,
+            "status": self.status,
+            "due_date": self.due_date,
+        }
