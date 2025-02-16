@@ -3,17 +3,9 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
-from app.src.Login.router import LoginRouter
+from app.src.ExternalServices.router import ExternalServiceRouter
 from app.src.Todos.router import TodoRouter
 from app.db import DBConnector
-from contextlib import asynccontextmanager
-
-from app.src.modules.todo_model import TodoModel
-
-from typing import Annotated
-
-from fastapi import Depends, FastAPI, Query
-from sqlmodel import Field, Session, SQLModel, create_engine
 
 settings = Settings()
 db = DBConnector()
@@ -21,10 +13,10 @@ db = DBConnector()
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="session")
 
-login_router = LoginRouter(settings=settings)
+external_router = ExternalServiceRouter(settings=settings)
 todo_router = TodoRouter(settings=settings)
 
-app.include_router(login_router.router)
+app.include_router(external_router.router)
 app.include_router(todo_router.router)
 origins = [
     "*"
@@ -38,6 +30,7 @@ app.add_middleware(
     allow_methods="*",
     allow_headers="*"
 )
+
 
 @app.on_event("startup")
 def on_startup():
