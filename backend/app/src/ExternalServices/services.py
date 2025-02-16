@@ -60,7 +60,7 @@ class ExternalServicesService():
         return response
 
 
-    async def get_mail_by_id(self, id:int):
+    async def get_mail_by_id(self, id:str):
         external_service = self._get_external_service()
         email = external_service.get_email_by_id(id=id)
         return email

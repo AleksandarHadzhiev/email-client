@@ -29,7 +29,7 @@ class ExternalServicesController():
                 endpoint={"path":f"/login/{email}", "method": "POST"},
                 status=e.status_code
             ).response()
-        
+
 
 
     async def auth(self, request: Request):
@@ -61,7 +61,6 @@ class ExternalServicesController():
     async def get_mail(self, id:str):
         try:
             email = await self.service.get_mail_by_id(id=id)
-            print(email)
             if email != None:
                 return Response(
                 content=json.dumps({"email": email}),

@@ -88,6 +88,5 @@ class Google(ExternalServiceProvider):
 
 
     def get_email_by_id(self, id):
-        print("SSO code:" + id)
         email = self.google_service.get_email_data(id=id, email_service=self.email_service)
         return email
