@@ -2,6 +2,30 @@
     "errors": [
         {
             "Exception": {
+                "time": "16/02/2025 10:17:29",
+                "message": {
+                    "194f6bfe503d3f91": "Requested entity was not found."
+                },
+                "status_code": 404,
+                "endpoint": {
+                    "path": "/mail/194f6bfe503d3f91",
+                    "method": "GET"
+                }
+            }
+        },
+        {
+            "Exception": {
+                "time": "16/02/2025 10:14:29",
+                "message": "Requested entity was not found.",
+                "status_code": 404,
+                "endpoint": {
+                    "path": "/mail/194f6bfe503d3f91",
+                    "method": "GET"
+                }
+            }
+        },
+        {
+            "Exception": {
                 "time": "16/02/2025 08:21:32",
                 "message": "Domain is not supported in the app",
                 "status_code": 401,

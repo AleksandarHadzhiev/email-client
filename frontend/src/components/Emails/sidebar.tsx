@@ -10,7 +10,7 @@ export default function Sidebar({ setMail }) {
         const fetchData = async () => {
             await fetch(BASE_URL).then(async (res) => {
                 const data = await res.json()
-                setMails(data)
+                setMails(data.mails)
             }).catch((err) => {
                 console.log(err)
             })

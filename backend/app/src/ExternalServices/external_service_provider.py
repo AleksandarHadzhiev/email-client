@@ -22,5 +22,5 @@ class ExternalServiceProvider(Protocol):
         pass
 
 
-    async def get_email_by_id(self, id:int):
+    async def get_email_by_id(self, id:str):
         pass

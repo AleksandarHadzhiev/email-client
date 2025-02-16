@@ -1,5 +1,4 @@
-import json
-from fastapi import Request, Response
+from fastapi import Request
 from oauthlib.oauth2 import WebApplicationClient
 from .service import GoogleService
 from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
@@ -50,7 +49,7 @@ class Google(ExternalServiceProvider):
         emails = self._read_messages_to_get_payload(messages=messages)
         self._extend_fetched_messages_until_length_fifty(emails=emails)
         self._set_next_page_token(result=result)
-        return Response(content=json.dumps(self.fetched_messages), media_type="json")
+        return self.fetched_messages
 
 
     def _get_message_id_from_google(self):
@@ -89,4 +88,6 @@ class Google(ExternalServiceProvider):
 
 
     def get_email_by_id(self, id):
-        return super().get_email_by_id(id)
+        print("SSO code:" + id)
+        email = self.google_service.get_email_data(id=id, email_service=self.email_service)
+        return email
