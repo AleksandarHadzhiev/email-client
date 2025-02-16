@@ -29,7 +29,7 @@ class ExternalServicesController():
                 endpoint={"path":f"/login/{email}", "method": "POST"},
                 status=e.status_code
             ).response()
-
+        
 
 
     async def auth(self, request: Request):
