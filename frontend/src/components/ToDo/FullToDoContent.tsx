@@ -29,15 +29,18 @@ export default function FullToDoContent({ todo, setIsOpened, setTrigeredEvent })
         })
     }
 
+    // 323232 / 292929 / 272727 / 222222
+    // const openedBodyToDoStructure = "flex flex-row h-full w-full bg-[#1C1C1C]"
+
     return (
-        <div className="w-1/3 h-full bg-gray-700 flex flex-col space-y-12">
+        <div className="w-1/3 h-full bg-[#323232] flex flex-col space-y-12">
             <button
                 onClick={() => { setIsOpened(false) }}
                 className="absolute right-0 px-2 py-1 bg-transparent border-2 border-gray-200 hover:border-gray-400 hover:text-gray-400">X</button>
-            <div id="title" className="w-[96%] ml-2 mr-2 bg-gray-900 w-full h-24">
-                <textarea className="w-full h-full bg-transparent text-white" value={title} onChange={(e) => { setTitle(e.target.value) }} onMouseLeave={() => { editToDo(todo.id) }} />
+            <div id="title" className="ml-2 w-[96%] bg-[#292929] h-24">
+                <textarea className="px-2 py-1 w-full h-full bg-transparent text-white" value={title} onChange={(e) => { setTitle(e.target.value) }} onMouseLeave={() => { editToDo(todo.id) }} />
             </div>
-            <div id="date" className="w-[96%] ml-2 mr-2 bg-gray-900 h-12 flex">
+            <div id="date" className="ml-2 w-[96%] h-12 bg-[#292929] flex">
                 <input
                     id="dueDate"
                     className="bg-transparent text-gray-200 border-2 rounded-md"
@@ -49,8 +52,8 @@ export default function FullToDoContent({ todo, setIsOpened, setTrigeredEvent })
                 />
                 <p className="self-center w-[80%]">Due date</p>
             </div>
-            <div id="desc" className="w-[96%] ml-2 mr-2 bg-gray-900 h-24">
-                <textarea className="w-full h-full bg-transparent text-white" value={desc} onChange={(e) => { setDesc(e.target.value) }} onMouseLeave={() => { editToDo(todo.id) }} />
+            <div id="desc" className="ml-2 w-[96%] bg-[#292929] h-24">
+                <textarea className="px-2 py-1 w-full h-full bg-transparent text-white" value={desc} onChange={(e) => { setDesc(e.target.value) }} onMouseLeave={() => { editToDo(todo.id) }} />
             </div>
         </div>
     )

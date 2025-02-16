@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Navbar from "@/components/navigation";
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/Emails/sidebar";
 import Login from "@/components/Login";
-import MailBody from "@/components/MailBody";
+import MailBody from "@/components/Emails/MailBody";
 export default function Home() {
   let username
   // Get the value from local storage if it exists

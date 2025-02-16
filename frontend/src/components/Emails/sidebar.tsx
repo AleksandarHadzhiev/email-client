@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import MailHeader from "./Emails/MailHeader"
-import SendMessage from "./Emails/SendMessage"
+import MailHeader from "./MailHeader"
+import SendMessage from "./SendMessage"
 //@ts-ignore
 export default function Sidebar({ setMail }) {
     const BASE_URL = "http://localhost:8000/get/mails"
@@ -19,7 +19,7 @@ export default function Sidebar({ setMail }) {
         fetchData()
     }, [mails.length])
     return (
-        <aside className="col-span-3 bg-gray-50 dark:bg-gray-800 overflow-y-auto">
+        <aside className="col-span-3 bg-[#272727] bg-[#272727] overflow-y-auto">
             <button
                 onClick={() => { setSendMessageIsActivated(true) }}
                 type="button"

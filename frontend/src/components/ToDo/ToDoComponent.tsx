@@ -5,7 +5,7 @@ export default function ToDoComponent({ setTrigeredEvent }) {
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [date, setDate] = useState("")
-    const CREATE_TODO_URL = "http://127.0.0.1:8000/todo"
+    const CREATE_TODO_URL = "http://127.0.0.1:8000/todos"
 
     const createToDo = () => {
         const todo = {
@@ -20,16 +20,21 @@ export default function ToDoComponent({ setTrigeredEvent }) {
 
     const post = async (todo: { title: string; description: string; due_date: string; email: string }) => {
         await fetch(CREATE_TODO_URL, { method: "POST", body: JSON.stringify(todo) }).then(async (res) => {
-            const data = await res.json()
-            console.log(data)
-            setTrigeredEvent("added")
+            if (res.status != 201) {
+                console.log(res)
+            }
+            else {
+                const data = await res.json()
+                console.log(data)
+                setTrigeredEvent("added")
+            }
         }).catch((err) => {
             console.log(err)
         })
     }
 
     return (
-        <div className="flex bg-gray-700 h-12 items-center align-center">
+        <div className="flex bg-[#272727] h-12 items-center align-center">
             <button
                 className="flex bg-transparent text-white font-semibold hover:text-gray-400 border border-solid border-2 border-white hover:border-gray-400 rounded py-1 px-3 rounded-full ml-2 mr-2"
                 onClick={() => {

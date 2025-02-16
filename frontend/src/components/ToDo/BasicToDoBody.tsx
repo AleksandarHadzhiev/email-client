@@ -29,7 +29,7 @@ export default function BasicToDoBody({ todos, setIsOpened, setTodo, setTrigered
                 <ul className="space-y-2 mt-2 font-medium">
                     {todos.map((todo: { title: any; id?: any }, index: Key | null | undefined) => (
                         <li
-                            className="h-12 hover:bg-gray-800 bg-gray-700 rounded-sm ml-2 mr-2 flex items-center align-center "
+                            className="h-12 hover:bg-gray-800 bg-[#272727] rounded-sm ml-2 mr-2 flex items-center align-center "
                             key={index}
                         >
                             <div className="w-[95%] flex space-x-2" onClick={() => { updateStructure(todo) }}>

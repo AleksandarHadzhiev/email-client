@@ -13,7 +13,8 @@ export default function Login() {
         console.log(email)
         await fetch(LOGIN_URL, { method: "POST", body: JSON.stringify({ email: email }) }).then(async (res) => {
             const data = await res.json()
-            router.push(data)
+
+            router.push(data.redirect)
         }).catch((err) => {
             console.log(err)
         })

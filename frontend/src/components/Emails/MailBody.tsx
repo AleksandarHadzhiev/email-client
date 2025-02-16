@@ -1,6 +1,6 @@
 'use client'
 import Email from "./Email"
-import LoadingScreen from "./loadingScreen"
+import LoadingScreen from "../loadingScreen"
 
 
 //@ts-ignore
