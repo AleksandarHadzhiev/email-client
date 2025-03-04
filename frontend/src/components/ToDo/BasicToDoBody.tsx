@@ -7,19 +7,16 @@ export default function BasicToDoBody({ todos, setIsOpened, setTodo, setTrigered
     const updateStructure = (todo: { title: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined }) => {
         setIsOpened(true)
         setTodo(todo)
-        console.log("Updated")
     }
 
     const DELETE_TODO_URL = "http://127.0.0.1:8000/todo/"
 
     async function deleteToDo(id: Number) {
-        console.log(id)
         await fetch(DELETE_TODO_URL + id.toString(), { method: "DELETE" }).then(async (res) => {
             const data = await res.json()
-            console.log(data)
             setTrigeredEvent("delete")
         }).catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
 

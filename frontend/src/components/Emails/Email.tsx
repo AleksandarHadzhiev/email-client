@@ -1,8 +1,7 @@
-import { JSXElementConstructor, Key, MouseEvent, ReactElement, ReactNode, ReactPortal, useState } from "react";
+import { JSXElementConstructor, Key, MouseEvent, ReactElement, ReactNode, ReactPortal } from "react";
 
 //@ts-ignore
 export default function Email({ email }) {
-    console.log(email)
     const attachments = email?.attachments
     const rowSpanForMain = attachments.length > 0 ? "row-span-8" : "row-span-9"
     const rowSpanForIFrame = attachments.length > 0 ? "row-span-7" : "row-span-9"
@@ -25,7 +24,6 @@ export default function Email({ email }) {
 
         const byteArray = new Uint8Array(byteNumbers);
         const blob = new Blob([byteArray], { type: type });
-        console.log(blob)
         const url = URL.createObjectURL(blob);
 
         // Create a link element to download the file

@@ -15,17 +15,15 @@ export default function FullToDoContent({ todo, setIsOpened, setTrigeredEvent })
             "due_date": date,
             "email": "aleks321@gmail.com" // It will be an actual email
         }
-        console.log(todo)
         post(todo, id.toString())
     }
 
     const post = async (todo: { title: string; description: string; due_date: string; email: string }, id: String) => {
         await fetch(CREATE_TODO_URL + id, { method: "PUT", body: JSON.stringify(todo) }).then(async (res) => {
             const data = await res.json()
-            console.log(data)
             setTrigeredEvent("edit")
         }).catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
 

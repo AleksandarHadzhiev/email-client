@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import BasicToDoBody from "./BasicToDoBody";
 import FullToDoContent from "./FullToDoContent";
-import RoutersHandler from "@/app/routersHandler";
 
 export function ToDosBody() {
     const GET_TODOS_URL = "http://127.0.0.1:8000/todos/aleks321@gmail.com"
@@ -16,14 +15,11 @@ export function ToDosBody() {
     const get = async () => {
         await fetch(GET_TODOS_URL, { method: "GET" }).then(async (res) => {
             const data = await res.json()
-            console.log(data.todos)
             setTodos(data.todos)
         }).catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
-
-    console.log(isOpened)
 
     useEffect(() => {
         get()

@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react"
 import MailHeader from "./MailHeader"
 import SendMessage from "./SendMessage"
+import ExternalServiceHandler from "@/app/ExternalServiceRouterHandler"
 //@ts-ignore
 export default function Sidebar({ setMail }) {
     const BASE_URL = "http://localhost:8000/get/mails"
     const [sendMessageIsActivated, setSendMessageIsActivated] = useState(false)
     const [mails, setMails] = useState([{ "from": "Aleks", "Date": "12.02.2024", "subject": "Renew contract", "body": "<p>Empty body</p>" }])
     useEffect(() => {
-        const fetchData = async () => {
-            await fetch(BASE_URL).then(async (res) => {
-                const data = await res.json()
-                setMails(data.mails)
-            }).catch((err) => {
-                console.log(err)
-            })
+        const getMails = async () => {
+            const externalServiceHandler = ExternalServiceHandler.instance
+            const body = externalServiceHandler.getMails(new URL(BASE_URL))
+            const data = await body
+            setMails(data)
         }
-
-        fetchData()
+        getMails()
     }, [mails.length])
     return (
         <aside className="col-span-3 bg-[#272727] bg-[#272727] overflow-y-auto">

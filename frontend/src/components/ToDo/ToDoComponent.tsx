@@ -14,22 +14,20 @@ export default function ToDoComponent({ setTrigeredEvent }) {
             "due_date": date,
             "email": "aleks321@gmail.com" // It will be an actual email
         }
-        console.log(todo)
         post(todo)
     }
 
     const post = async (todo: { title: string; description: string; due_date: string; email: string }) => {
         await fetch(CREATE_TODO_URL, { method: "POST", body: JSON.stringify(todo) }).then(async (res) => {
             if (res.status != 201) {
-                console.log(res)
+                alert(res)
             }
             else {
                 const data = await res.json()
-                console.log(data)
                 setTrigeredEvent("added")
             }
         }).catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
 

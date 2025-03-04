@@ -1,10 +1,9 @@
-
-import { promises as fs } from 'fs';
 import { useRef, useState } from 'react';
+import ExternalServiceHandler from '@/app/ExternalServiceRouterHandler';
 
 //@ts-ignore
 export default function SendMessage({ setSendMessageIsActivated }) {
-    console.log("CONSTANT")
+    const externalExerivceHandler = ExternalServiceHandler.instance
     const [to, setTo] = useState("")
     const [subject, setSubject] = useState("")
     const [body, setBody] = useState("")
@@ -17,46 +16,47 @@ export default function SendMessage({ setSendMessageIsActivated }) {
         const files = e.target.files
         const file = files ? files[0] : null
         if (file != null) {
-            console.log(file)
             const fileReader = new FileReader()
             fileReader.readAsBinaryString(file)
             fileReader.onload = e => {
                 const content = e.target?.result
-                console.log(content)
                 const _file = {
                     name: file.name,
                     type: file.type,
                     content: content
                 }
-                console.log(_file)
                 _files.push(_file)
             }
         }
     }
 
     const sendMessage = async () => {
-        console.log(_files)
-        const message = {
-            to: to,
-            from: username,
-            date: new Date().toLocaleString(),
-            subject: subject,
-            body: body,
-            attachments: _files
-        }
-        console.log(message)
-
-        await fetch(SEND_URL, { method: "POST", body: JSON.stringify(message) }).then(async (res) => {
-            const data = await res.json()
-            const labels = data == "SENT" ? data : data.labelIds
-            if (labels.includes('SENT')) {
-                console.log(data)
-                setSendMessageIsActivated(false)
-                alert("Success")
+        let message = {}
+        if (_files.length == 0) {
+            message = {
+                to: to,
+                from: username,
+                date: new Date().toLocaleString(),
+                subject: subject,
+                body: body,
             }
-        }).catch((err) => {
-            console.log(err)
-        })
+        }
+        else {
+            message = {
+                to: to,
+                from: username,
+                date: new Date().toLocaleString(),
+                subject: subject,
+                body: body,
+                attachments: _files
+            }
+        }
+
+        const res = await externalExerivceHandler.sendMessage(message, new URL(SEND_URL))
+        if (res == 'SENT') {
+            setSendMessageIsActivated(false)
+            alert("Success")
+        }
     }
 
     return (
