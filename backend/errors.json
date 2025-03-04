@@ -1,67 +1,2536 @@
 {
     "errors": [
         {
-            "type": "InvalidEmail",
-            "message": "Invalid email, check for missing @.",
-            "status_code": 400,
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
             "endpoint": {
-                "path": "/login",
-                "method": "POST",
-                "body": {
-                    "data": "asd.bv"
-                }
+                "path": "/get/mails",
+                "method": "GET",
+                "body": []
             },
-            "time": "16/02/2025 11:57:41",
-            "input_type": [
-                "email"
+            "time": "04/03/2025 10:03:32",
+            "input": [
+                []
             ]
         },
         {
-            "type": "UnsupportedDomainError",
-            "message": "The used domain is not part of our support. We support gmail and outlook only.",
-            "status_code": 400,
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
             "endpoint": {
-                "path": "/login",
+                "path": "/send",
                 "method": "POST",
                 "body": {
-                    "data": "asle@asd.bv"
+                    "to": "alekshadzhiev01@abv.bg",
+                    "from": "alekshadzhiev12@gmail.com",
+                    "date": "04/03/2025, 10:00:46",
+                    "subject": "S",
+                    "body": "Hello"
                 }
             },
-            "time": "16/02/2025 11:57:22",
-            "input_type": [
-                "email"
+            "time": "04/03/2025 10:00:46",
+            "input": [
+                {
+                    "to": "alekshadzhiev01@abv.bg",
+                    "from": "alekshadzhiev12@gmail.com",
+                    "date": "04/03/2025, 10:00:46",
+                    "subject": "S",
+                    "body": "Hello"
+                }
             ]
         },
         {
-            "type": "UnsupportedDomainError",
-            "message": "The used domain is not part of our support. We support gmail and outlook only.",
-            "status_code": 400,
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
             "endpoint": {
-                "path": "/login",
+                "path": "/auth",
                 "method": "POST",
                 "body": {
-                    "data": "ivan@gmail.nl"
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxr2L7KxJ96cMFuMeZ6JUxUc5UVphOC_DRzgVveeB2X_U3tzcv1RYQHlkhGa33P-qXRAjN8j1lx94NVp47Otpz94HFQ==&prot=gAAAAABnxr2LzSmt3Y_mtRd-S13dg6uUV835q_9cXtkws8sukwcamNOLkBF1ChbRpXzIckqMTuttVDwr_oIMlGtmFsxB7MdsdA==&external=1"
                 }
             },
-            "time": "16/02/2025 11:55:21",
-            "input_type": [
-                "email"
+            "time": "04/03/2025 09:45:00",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxr2L7KxJ96cMFuMeZ6JUxUc5UVphOC_DRzgVveeB2X_U3tzcv1RYQHlkhGa33P-qXRAjN8j1lx94NVp47Otpz94HFQ==&prot=gAAAAABnxr2LzSmt3Y_mtRd-S13dg6uUV835q_9cXtkws8sukwcamNOLkBF1ChbRpXzIckqMTuttVDwr_oIMlGtmFsxB7MdsdA==&external=1"
+                }
             ]
         },
         {
-            "type": "UnsupportedDomainError",
-            "message": "The used domain is not part of our support. We support gmail and outlook only.",
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/get/mails",
+                "method": "GET",
+                "body": []
+            },
+            "time": "04/03/2025 09:41:55",
+            "input": [
+                []
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/get/mails",
+                "method": "GET",
+                "body": []
+            },
+            "time": "04/03/2025 09:40:52",
+            "input": [
+                []
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/get/mails",
+                "method": "GET",
+                "body": []
+            },
+            "time": "04/03/2025 09:40:43",
+            "input": [
+                []
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/get/mails",
+                "method": "GET",
+                "body": []
+            },
+            "time": "04/03/2025 09:34:23",
+            "input": [
+                []
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/get/mails",
+                "method": "GET",
+                "body": []
+            },
+            "time": "04/03/2025 09:34:23",
+            "input": [
+                []
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 09:25:49",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 09:10:41",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 09:04:29",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 09:03:23",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 09:02:06",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 09:01:02",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 08:59:33",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            },
+            "time": "04/03/2025 08:59:24",
+            "input": [
+                {
+                    "email": "alekshadzhiev12@gmail.com"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxIm3ffS_TGHefoaFRWdvYfTO_ZJj2JYPHoeFktmW1rBfDCZp0J9wL82NRt3R-QvtVulhq0zFnKkNXdcFY0LM5ZvuRA==&prot=gAAAAABnxIm30424z4InofA8G4YAuVQx4QlFLhh11ytWrDx8nVYYM3SME-aMzz4NkRmHfof1JuyOzyG7IG80WnU9dolFtTZOSA==&external=1"
+                }
+            },
+            "time": "02/03/2025 17:39:20",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxIm3ffS_TGHefoaFRWdvYfTO_ZJj2JYPHoeFktmW1rBfDCZp0J9wL82NRt3R-QvtVulhq0zFnKkNXdcFY0LM5ZvuRA==&prot=gAAAAABnxIm30424z4InofA8G4YAuVQx4QlFLhh11ytWrDx8nVYYM3SME-aMzz4NkRmHfof1JuyOzyG7IG80WnU9dolFtTZOSA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGslKW-BGi64CmhS09xrVu0fEpagfWT8Sz2Gq9snKk0ZJWZIo3RRIRnIWKbBbO91C5aubI0pjLTyiLtXkfvxDgVAsA==&prot=gAAAAABnxGsl70EVrSRTAEDtsbEaiju_XqwJiN7VHpihuchTb7yWHtrjGoOw14Z_t5We7KGLH9VvHQkQYAPHmue4rXeH6wo_Dg==&external=1"
+                }
+            },
+            "time": "02/03/2025 15:28:53",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGslKW-BGi64CmhS09xrVu0fEpagfWT8Sz2Gq9snKk0ZJWZIo3RRIRnIWKbBbO91C5aubI0pjLTyiLtXkfvxDgVAsA==&prot=gAAAAABnxGsl70EVrSRTAEDtsbEaiju_XqwJiN7VHpihuchTb7yWHtrjGoOw14Z_t5We7KGLH9VvHQkQYAPHmue4rXeH6wo_Dg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "02/03/2025 15:28:37",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGg-9oyQEe6O0huM3gTntRAG1A9jvsbZ9_3fa0A9a3qMlzENdUhZoZ8VjJti1WWj4S-WQAh5_gGaVVINy0SFQcPpug==&prot=gAAAAABnxGg-2yjXxYnx5-549psqeRDN4iH6HEyQTA5P6QKI3f2DvdMU5DjaGAyTspWIQFw8olDG2fnvnGnIJZSfB3v2BWw0Tw==&external=1"
+                }
+            },
+            "time": "02/03/2025 15:16:30",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGg-9oyQEe6O0huM3gTntRAG1A9jvsbZ9_3fa0A9a3qMlzENdUhZoZ8VjJti1WWj4S-WQAh5_gGaVVINy0SFQcPpug==&prot=gAAAAABnxGg-2yjXxYnx5-549psqeRDN4iH6HEyQTA5P6QKI3f2DvdMU5DjaGAyTspWIQFw8olDG2fnvnGnIJZSfB3v2BWw0Tw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGgXSTHMORSq9OLXMmV-g7PSWoinIGbVcGrGZLLuICPdYfMLFt1IupzjUhYXv4lk-Pg4H-vHHVdMReKLJnHu095VCg==&prot=gAAAAABnxGgX6yZ3-_FYgBF9saGTR7HO6j8YG7W0R9LUBu4AD-JNAzccMKtv3OovkXN5IrV6GwiqIsR_m4ujGnzyDolqLIGbUw==&external=1"
+                }
+            },
+            "time": "02/03/2025 15:15:51",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGgXSTHMORSq9OLXMmV-g7PSWoinIGbVcGrGZLLuICPdYfMLFt1IupzjUhYXv4lk-Pg4H-vHHVdMReKLJnHu095VCg==&prot=gAAAAABnxGgX6yZ3-_FYgBF9saGTR7HO6j8YG7W0R9LUBu4AD-JNAzccMKtv3OovkXN5IrV6GwiqIsR_m4ujGnzyDolqLIGbUw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGd1Y7i3CuoB2ryxS2IM43J4UOq3UXQhhJYsL4sT8r7sSB5us_7SeLeBiLYuRIAwk9q4tMdb7FL6F_5nac5faSOFOg==&prot=gAAAAABnxGd1ZzvWLcnW9JxItTcMEL_i4ROdUYd15BZo1DftYwFo5LWM9MRlZ5XNywsdqY1o2QY_A0cix9bRfsOnkR-SLyMZiA==&external=1"
+                }
+            },
+            "time": "02/03/2025 15:13:10",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGd1Y7i3CuoB2ryxS2IM43J4UOq3UXQhhJYsL4sT8r7sSB5us_7SeLeBiLYuRIAwk9q4tMdb7FL6F_5nac5faSOFOg==&prot=gAAAAABnxGd1ZzvWLcnW9JxItTcMEL_i4ROdUYd15BZo1DftYwFo5LWM9MRlZ5XNywsdqY1o2QY_A0cix9bRfsOnkR-SLyMZiA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGb4QnetRWVlZPYNlHmeMcE7bBdPFKXZNU4R1zSVCqGsW_oDEIqV4uqKeIW_YKeHi8Qvz2rzcqO_boVo2s3YlIm3vQ==&prot=gAAAAABnxGb47hJYieCiuEXsu_FABfAuGfhRhoteFYVVunw5sYoU4EoH4xUWB4k3dWr588RvubuoyIeN2jTC-MKyodQOyBBUfg==&external=1"
+                }
+            },
+            "time": "02/03/2025 15:11:04",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGb4QnetRWVlZPYNlHmeMcE7bBdPFKXZNU4R1zSVCqGsW_oDEIqV4uqKeIW_YKeHi8Qvz2rzcqO_boVo2s3YlIm3vQ==&prot=gAAAAABnxGb47hJYieCiuEXsu_FABfAuGfhRhoteFYVVunw5sYoU4EoH4xUWB4k3dWr588RvubuoyIeN2jTC-MKyodQOyBBUfg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGZT8NVOaa3iILbzkCgRWFYTP8w3Nctyil9d5xHrxL5W-zWw_joU8IZbdztRWCWKtCbmsiGL_C_0TFdFLEcBFp4ADw==&prot=gAAAAABnxGZT0Ap5We6KEddpe5QtrD5zFrT_0LhR2PLAAazwP7JT3CQ_y8TGkPqaB4hrUvCNstUgCb-WCK0p_GY8Rnfw-dMSyQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 15:08:20",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGZT8NVOaa3iILbzkCgRWFYTP8w3Nctyil9d5xHrxL5W-zWw_joU8IZbdztRWCWKtCbmsiGL_C_0TFdFLEcBFp4ADw==&prot=gAAAAABnxGZT0Ap5We6KEddpe5QtrD5zFrT_0LhR2PLAAazwP7JT3CQ_y8TGkPqaB4hrUvCNstUgCb-WCK0p_GY8Rnfw-dMSyQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGB9Nmaep3s1f96I47Cnq5E33hd0-_p1zso5Pjfe1ZYdSUhsuoJcJiyuRCQ7BsFkKUp2r8WkvG7dKtXOj-vHwc6aig==&prot=gAAAAABnxGB9urrVmJQU1kQ432d-y-_wB9wFwTZNMKYKPtNrMg8ZgREPgtqNi_A6JTiX8Jm3NHIFnmtL3E1iBa9v5Yxg2kiPYQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:43:25",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGB9Nmaep3s1f96I47Cnq5E33hd0-_p1zso5Pjfe1ZYdSUhsuoJcJiyuRCQ7BsFkKUp2r8WkvG7dKtXOj-vHwc6aig==&prot=gAAAAABnxGB9urrVmJQU1kQ432d-y-_wB9wFwTZNMKYKPtNrMg8ZgREPgtqNi_A6JTiX8Jm3NHIFnmtL3E1iBa9v5Yxg2kiPYQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGBqlF0vyUyZ-cxphODfWrVjKgNozPy5rNzN6Eea2XsltaNOaBHbRVF0WILoXFas-QSU1rYGqxA6xdCTlhew7KoKxA==&prot=gAAAAABnxGBqmzqnax-75lA4fyvEGsbARpC2ODP4ajfIcWlwC03OIb9sgX61ztdXgaSj4492TM-mz7U1eKtXoD5iGgq8tP3C1A==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:43:06",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGBqlF0vyUyZ-cxphODfWrVjKgNozPy5rNzN6Eea2XsltaNOaBHbRVF0WILoXFas-QSU1rYGqxA6xdCTlhew7KoKxA==&prot=gAAAAABnxGBqmzqnax-75lA4fyvEGsbARpC2ODP4ajfIcWlwC03OIb9sgX61ztdXgaSj4492TM-mz7U1eKtXoD5iGgq8tP3C1A==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGAxix6a6z6sGrCi-DdjW2rHUubyc9o50Rf3ddi88xVrcIHEy3lomqW4S4ESO-y9hDvFL10ycByC49La5XgTn92Law==&prot=gAAAAABnxGAxFoc87a3dB-muvZbyjGbLSYkkZtcHbry-9ftjf6rv-ReA2ivU68S5Q52lwIx8r1jpiaFA5lDVg1WcSnBPsdTxew==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:42:09",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxGAxix6a6z6sGrCi-DdjW2rHUubyc9o50Rf3ddi88xVrcIHEy3lomqW4S4ESO-y9hDvFL10ycByC49La5XgTn92Law==&prot=gAAAAABnxGAxFoc87a3dB-muvZbyjGbLSYkkZtcHbry-9ftjf6rv-ReA2ivU68S5Q52lwIx8r1jpiaFA5lDVg1WcSnBPsdTxew==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxF-7p7qEzwYk5u9sCjTG7eMgoagixdTXbPQkiosTB7_GUeMx0Z4fvBQEvSdjD2TQMCAF6VZhhmkH5HZcgbwbaS2AEw==&prot=gAAAAABnxF-7PoZ2yW3UfmN-kkH5VgSRaJsL0CpKt58RIzPBdMKyEHTjxqmIQtlpo0Shm5OkzX_61yzD_hDu6mxawW4xs2VEFg==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:40:12",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxF-7p7qEzwYk5u9sCjTG7eMgoagixdTXbPQkiosTB7_GUeMx0Z4fvBQEvSdjD2TQMCAF6VZhhmkH5HZcgbwbaS2AEw==&prot=gAAAAABnxF-7PoZ2yW3UfmN-kkH5VgSRaJsL0CpKt58RIzPBdMKyEHTjxqmIQtlpo0Shm5OkzX_61yzD_hDu6mxawW4xs2VEFg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxF-JQuyc7UaVgGTCRQ8b8LaGUVvK6Vha7tDeM1J8HKBSC4om4QPrWVIsRzoF5mkZpX4EzF-_DJeyjDZ4ehqwOzpuCw==&prot=gAAAAABnxF-JE2otXFUQWw_XVv0YJz_Nsiq1aJYD1ltnvwRi5JR5gg8agg6he-6Q06MAW1E3lKgc8z97CKc1bHzIX0MvXPHntA==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:39:21",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxF-JQuyc7UaVgGTCRQ8b8LaGUVvK6Vha7tDeM1J8HKBSC4om4QPrWVIsRzoF5mkZpX4EzF-_DJeyjDZ4ehqwOzpuCw==&prot=gAAAAABnxF-JE2otXFUQWw_XVv0YJz_Nsiq1aJYD1ltnvwRi5JR5gg8agg6he-6Q06MAW1E3lKgc8z97CKc1bHzIX0MvXPHntA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxF8Hnn7JsG05WHjt16p5Q1hcb81Yt6j_J50bPLOh22H1cusBlrnzDpOedbuBeDawwJgODEnFfino7XbhXx7YjfrwLA==&prot=gAAAAABnxF8HcaxDRgi4mEw1WtOV8jC-RXmeE26Nob5SYrrP8ZPzyaoJlbrA4ZG5xSYzRoMZuys19ZB1Kuwu1HIDEpApyEGn1w==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:37:12",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxF8Hnn7JsG05WHjt16p5Q1hcb81Yt6j_J50bPLOh22H1cusBlrnzDpOedbuBeDawwJgODEnFfino7XbhXx7YjfrwLA==&prot=gAAAAABnxF8HcaxDRgi4mEw1WtOV8jC-RXmeE26Nob5SYrrP8ZPzyaoJlbrA4ZG5xSYzRoMZuys19ZB1Kuwu1HIDEpApyEGn1w==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFtQy_b0fYZyg25FdK_82NAi3JRWicSGSzFWooP_W3VDQ0hah0MSDdNxJNWDhzn0c_K2CnmMfpJD2iBvKwzwbsfL5w==&prot=gAAAAABnxFtQAl8OUAGkX_0q7B34q8uXYA7-ZcoAUBAFg3TfP7V0eSbk3YA58x2zOjp6ylfQVfRRQQtsWHGykoXyWE1ToPwwBg==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:21:20",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFtQy_b0fYZyg25FdK_82NAi3JRWicSGSzFWooP_W3VDQ0hah0MSDdNxJNWDhzn0c_K2CnmMfpJD2iBvKwzwbsfL5w==&prot=gAAAAABnxFtQAl8OUAGkX_0q7B34q8uXYA7-ZcoAUBAFg3TfP7V0eSbk3YA58x2zOjp6ylfQVfRRQQtsWHGykoXyWE1ToPwwBg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "02/03/2025 14:21:05",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFrCGqOOGZj0w3J-FYwAUQVYu1owXC5mcddVMoT26xYWCziPjjALLl6JvWLDU2Tua5-rP8uKxMH52BcxO64VbhpYYw==&prot=gAAAAABnxFrCUXRxUhc8CJDzyTtOOLGudHZpKYhU_pPJWSDSifvYg0zNCPhlBOZQmiq9h66qZIYx8DQiCcyQp1WLIKkoXsUdPw==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:18:59",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFrCGqOOGZj0w3J-FYwAUQVYu1owXC5mcddVMoT26xYWCziPjjALLl6JvWLDU2Tua5-rP8uKxMH52BcxO64VbhpYYw==&prot=gAAAAABnxFrCUXRxUhc8CJDzyTtOOLGudHZpKYhU_pPJWSDSifvYg0zNCPhlBOZQmiq9h66qZIYx8DQiCcyQp1WLIKkoXsUdPw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFpdZiAFeT_qKt9Y1g3wDbgdqrzLbPXGYy1WIc04clzTjHMPUSmaHw-cZpUp_uQH3lGuy19wbg1b4QwA7Yinp7HfDg==&prot=gAAAAABnxFpdP6la8SA59clXjBj23vdAeT09F5seXj9sWdFreRHwZy3NskBStBTBhXqr9mAV79NcAUE0SWwYK0LJxDZ9NarCEQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:17:17",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFpdZiAFeT_qKt9Y1g3wDbgdqrzLbPXGYy1WIc04clzTjHMPUSmaHw-cZpUp_uQH3lGuy19wbg1b4QwA7Yinp7HfDg==&prot=gAAAAABnxFpdP6la8SA59clXjBj23vdAeT09F5seXj9sWdFreRHwZy3NskBStBTBhXqr9mAV79NcAUE0SWwYK0LJxDZ9NarCEQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFo0McTVrhhHSgq9GKDgK57-PHYsIxIazEJ8u4l6wkKbakNX1rq0pacYX3ZlwFQElejlQfr9lUTB9wE81zGcOsRwdw==&prot=gAAAAABnxFo0t8KU5Li87wbWHKnJabi7lVv57FeDh6WG3XYgKXX6Bqbto2s6BUbYGkkqsKbDj6_lO50UBKxbcuXd35pasdYpow==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:16:36",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFo0McTVrhhHSgq9GKDgK57-PHYsIxIazEJ8u4l6wkKbakNX1rq0pacYX3ZlwFQElejlQfr9lUTB9wE81zGcOsRwdw==&prot=gAAAAABnxFo0t8KU5Li87wbWHKnJabi7lVv57FeDh6WG3XYgKXX6Bqbto2s6BUbYGkkqsKbDj6_lO50UBKxbcuXd35pasdYpow==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFn4zip4N4_NMKY9BJM0ARMVAhiJ5mPq_ZhJQAxlBdvaTCpjmZCT_eoQkMa7LfaQMOKwmKC1eEwCETnmn8PeenpTzQ==&prot=gAAAAABnxFn4C2yq2in0vYpF4xEO2K5E-Fu4JeMu4Ht62kU7PHG3kbyjajVJmkaR-sEKE_BEQCJoB4pmEccZ0H6J-1vgR7HQJA==&external=1"
+                }
+            },
+            "time": "02/03/2025 14:15:36",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxFn4zip4N4_NMKY9BJM0ARMVAhiJ5mPq_ZhJQAxlBdvaTCpjmZCT_eoQkMa7LfaQMOKwmKC1eEwCETnmn8PeenpTzQ==&prot=gAAAAABnxFn4C2yq2in0vYpF4xEO2K5E-Fu4JeMu4Ht62kU7PHG3kbyjajVJmkaR-sEKE_BEQCJoB4pmEccZ0H6J-1vgR7HQJA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxErN1EfLytU-1D89HoBTZw3PQ3FPJxEVU6P1nPAl4ciNA2Xbu3qh518kX2ElUw2In054111Ji5L0w2MfK3gzYDU2Iw==&prot=gAAAAABnxErNoowUPzn2QzV8RDWGyxvVgpCIsO7P89q-E-wXw8Nikzkxpq4g-dkMsotLvTh0SjoOr-LweiJMeoLDI2hf2euA2w==&external=1"
+                }
+            },
+            "time": "02/03/2025 13:10:55",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxErN1EfLytU-1D89HoBTZw3PQ3FPJxEVU6P1nPAl4ciNA2Xbu3qh518kX2ElUw2In054111Ji5L0w2MfK3gzYDU2Iw==&prot=gAAAAABnxErNoowUPzn2QzV8RDWGyxvVgpCIsO7P89q-E-wXw8Nikzkxpq4g-dkMsotLvTh0SjoOr-LweiJMeoLDI2hf2euA2w==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxD2dLSYVP4aDm9UadJM07pV8GsLht9jlbV0i82ud1mgAiufoUFgLMjCvVO1I8P0dsI0xJqu2PLb_Hh2lX5rNg5pcMA==&prot=gAAAAABnxD2d1SE2wwRipOmFbI1yBPqHR6GoTCulgqpJWtkITaMaSpSlYltsWr5bhA7QAwZEnt3aEIi6hYnhL8EGT9rQJAdgmQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:14:37",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxD2dLSYVP4aDm9UadJM07pV8GsLht9jlbV0i82ud1mgAiufoUFgLMjCvVO1I8P0dsI0xJqu2PLb_Hh2lX5rNg5pcMA==&prot=gAAAAABnxD2d1SE2wwRipOmFbI1yBPqHR6GoTCulgqpJWtkITaMaSpSlYltsWr5bhA7QAwZEnt3aEIi6hYnhL8EGT9rQJAdgmQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxD1AMcPpHLIq-akNZjh6eBQcza5fiNh74eFACjt8ftv9J17hoZ0uchaaOkLIBTpGPfzGdygaQRqIYqftB6r74u3bvw==&prot=gAAAAABnxD1AQgh8SeXeZ8rANvTW_AHFnWXamb_4O7u7fGlY6c0TIy6OzUBE6uDf2YFfrlykWdRDkxx-jMkgZ_oC_UcKcPS9Vg==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:13:04",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxD1AMcPpHLIq-akNZjh6eBQcza5fiNh74eFACjt8ftv9J17hoZ0uchaaOkLIBTpGPfzGdygaQRqIYqftB6r74u3bvw==&prot=gAAAAABnxD1AQgh8SeXeZ8rANvTW_AHFnWXamb_4O7u7fGlY6c0TIy6OzUBE6uDf2YFfrlykWdRDkxx-jMkgZ_oC_UcKcPS9Vg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "02/03/2025 12:12:28",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDzagkm_AVrplBnJvAmrPTx-wkP44nHoszREDlJeHhrhSroU26_fJJx4jIYr4hczXQGGJt3hbRCv9IGivu53JZFP2Q==&prot=gAAAAABnxDzaWAWUskuGLzMPSEW5A6xw0DNQU3Bg7MKK3vsM743JsOioZxUoeXaNZ4KJCxeHOlZDII9Mlev8mfpi_W6Ywn5oCg==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:11:22",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDzagkm_AVrplBnJvAmrPTx-wkP44nHoszREDlJeHhrhSroU26_fJJx4jIYr4hczXQGGJt3hbRCv9IGivu53JZFP2Q==&prot=gAAAAABnxDzaWAWUskuGLzMPSEW5A6xw0DNQU3Bg7MKK3vsM743JsOioZxUoeXaNZ4KJCxeHOlZDII9Mlev8mfpi_W6Ywn5oCg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDyPK7DymeW3vc_uTS96uTpUxX1MAsyFqrYqixhxE5IL2Nh_fUmAZ__vuRGCGEPxFFNCJBlKjJbJiwYHlU1NWsYNWg==&prot=gAAAAABnxDyP7RQSLIqgkH_i3BT6yxjx_nrO50U4m910L4R_Enk6iB9oOJZ1s-Qzu9zHXXKNb0JZ7xJqy3vQr4CWBL1lzMHwGA==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:10:07",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDyPK7DymeW3vc_uTS96uTpUxX1MAsyFqrYqixhxE5IL2Nh_fUmAZ__vuRGCGEPxFFNCJBlKjJbJiwYHlU1NWsYNWg==&prot=gAAAAABnxDyP7RQSLIqgkH_i3BT6yxjx_nrO50U4m910L4R_Enk6iB9oOJZ1s-Qzu9zHXXKNb0JZ7xJqy3vQr4CWBL1lzMHwGA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDx85ukc9p8Pc3yvO6WAOzx-B3YzuINFNhLeVRnz6SJHMgAIXOQJhAC3wixGUTO7UM75f5b6GZtOf3WfC9JnmY_aBw==&prot=gAAAAABnxDx8d5aCM4JqgrVemSQuoFR3pnY-UMorqfuvhhe-1i9uxRosNNeTKx3ETF38R-b-bJMM9-uK7H_mR-vRnEINHJ-PJw==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:09:48",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDx85ukc9p8Pc3yvO6WAOzx-B3YzuINFNhLeVRnz6SJHMgAIXOQJhAC3wixGUTO7UM75f5b6GZtOf3WfC9JnmY_aBw==&prot=gAAAAABnxDx8d5aCM4JqgrVemSQuoFR3pnY-UMorqfuvhhe-1i9uxRosNNeTKx3ETF38R-b-bJMM9-uK7H_mR-vRnEINHJ-PJw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDw-2iaEOaVM2PGthohr7G0iNssKM3X15oG5PguN2liHjZWz_vBzaKgXGLK4WwmmgHXxINEZingXnN_gNPP42zDZmw==&prot=gAAAAABnxDw-eJfTrCngW_nejBWk4OrrZMv9xsZHXU5LJGtpQKK_bDrphmaUtdTMZgBw1MG_r9xXEOGp0OI3SNg_0O8TR_WaKw==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:08:46",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDw-2iaEOaVM2PGthohr7G0iNssKM3X15oG5PguN2liHjZWz_vBzaKgXGLK4WwmmgHXxINEZingXnN_gNPP42zDZmw==&prot=gAAAAABnxDw-eJfTrCngW_nejBWk4OrrZMv9xsZHXU5LJGtpQKK_bDrphmaUtdTMZgBw1MG_r9xXEOGp0OI3SNg_0O8TR_WaKw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDuhbE6qPAqw5fQZSv1pWKa5zwDBRwTuFpw6bQrD6f1fYEE92q8SpvGr3pEzOEUkqaLEBWytlJlTbREYvuy0qC6UsA==&prot=gAAAAABnxDuhNXYH7MmidSZlN_JM3gUhJxDkmzHWt3EJwSCZP1SCDALJU9K-1UjjZJzjqAv5PmJ-EXbYEEVwupLwHyFlj8xV-w==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:06:10",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDuhbE6qPAqw5fQZSv1pWKa5zwDBRwTuFpw6bQrD6f1fYEE92q8SpvGr3pEzOEUkqaLEBWytlJlTbREYvuy0qC6UsA==&prot=gAAAAABnxDuhNXYH7MmidSZlN_JM3gUhJxDkmzHWt3EJwSCZP1SCDALJU9K-1UjjZJzjqAv5PmJ-EXbYEEVwupLwHyFlj8xV-w==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDs8Ippf2jrMMbf8aG3Pq362ntXMCht9iotrEKL9PTpy-cfunvEGfE7tPLsHuXov2z4divuleKnZixHpFBTSuGEMUQ==&prot=gAAAAABnxDs8dgm69BWzMpjkdlt3sFfskSZxGYgnCatberajbDTyjg-pFmaKxg-R8kWtNttP99mDpvaOCBmo0HvvzC3vWzHjGQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:04:28",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDs8Ippf2jrMMbf8aG3Pq362ntXMCht9iotrEKL9PTpy-cfunvEGfE7tPLsHuXov2z4divuleKnZixHpFBTSuGEMUQ==&prot=gAAAAABnxDs8dgm69BWzMpjkdlt3sFfskSZxGYgnCatberajbDTyjg-pFmaKxg-R8kWtNttP99mDpvaOCBmo0HvvzC3vWzHjGQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDrHziC-EEbEGvi5s4Bxd_5YL6ICqxPLFCVSi9xBASebdENB8nopBymaHHAwHmlbahNFtwO6icWHPjM3yBM78Gz0-g==&prot=gAAAAABnxDrHZ7PpzReuZLMaL5b4vVxOkWLM4ZoifwdpQvyaGQbB17cr3ygisag4otQ1oMlOTDyz9FI7Mltzxc5GGQU9aUye7g==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:02:31",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDrHziC-EEbEGvi5s4Bxd_5YL6ICqxPLFCVSi9xBASebdENB8nopBymaHHAwHmlbahNFtwO6icWHPjM3yBM78Gz0-g==&prot=gAAAAABnxDrHZ7PpzReuZLMaL5b4vVxOkWLM4ZoifwdpQvyaGQbB17cr3ygisag4otQ1oMlOTDyz9FI7Mltzxc5GGQU9aUye7g==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDqXFByKL19SxO2RvlOxyjxfRYs51BBpdYPX7V0-CAYWqhgmmM7THqu65xexQeN4VM444J_xoe4AFHTd-IPtfTI56A==&prot=gAAAAABnxDqXaGESiuZroGmIM00FkXgV8-f2DIhs2AkBqEp6fRfpE7mF4JlBYJRoix9iOaw8Y1nnXa_KP0-VUnEjg9991d3xXw==&external=1"
+                }
+            },
+            "time": "02/03/2025 12:01:43",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDqXFByKL19SxO2RvlOxyjxfRYs51BBpdYPX7V0-CAYWqhgmmM7THqu65xexQeN4VM444J_xoe4AFHTd-IPtfTI56A==&prot=gAAAAABnxDqXaGESiuZroGmIM00FkXgV8-f2DIhs2AkBqEp6fRfpE7mF4JlBYJRoix9iOaw8Y1nnXa_KP0-VUnEjg9991d3xXw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDnMCeyeS1MZBFnSBEBQP84fXTcikXDF0wgEswv5B4JTWVXkqDVhRVfonJhjgo-E3HdCvnltkS20xq1G7pJXxyYLAQ==&prot=gAAAAABnxDnMPeJrArZqm6j8H_uLl1t66OlGtlAZN61UW6VDDQT7C0F3REYnQLVquQ-Tq1wFPgQ-VxEndDnGxsApHHiVvPQcFQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:58:20",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDnMCeyeS1MZBFnSBEBQP84fXTcikXDF0wgEswv5B4JTWVXkqDVhRVfonJhjgo-E3HdCvnltkS20xq1G7pJXxyYLAQ==&prot=gAAAAABnxDnMPeJrArZqm6j8H_uLl1t66OlGtlAZN61UW6VDDQT7C0F3REYnQLVquQ-Tq1wFPgQ-VxEndDnGxsApHHiVvPQcFQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDkldZs2aGRejXp3ltl2MscfBdOwujOdAeAkujBVHKHdy7gTNPqP7NdCrcBhOogWAgOULHg6vb2PwUjSWjGOLkWb9A==&prot=gAAAAABnxDkl5DP_spkOcdFSYUBRxlcJnz3KvX3JSM-qyH3GMwbbBXsjJ392KkJ254BlknI9p00TOYbds8YYa7e_MVBMtPpT8A==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:55:33",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDkldZs2aGRejXp3ltl2MscfBdOwujOdAeAkujBVHKHdy7gTNPqP7NdCrcBhOogWAgOULHg6vb2PwUjSWjGOLkWb9A==&prot=gAAAAABnxDkl5DP_spkOcdFSYUBRxlcJnz3KvX3JSM-qyH3GMwbbBXsjJ392KkJ254BlknI9p00TOYbds8YYa7e_MVBMtPpT8A==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDh5BZTtePgUddqfWT2dWL5TsXMnVGxxbi-sI9Y4MQmwkUOWHrKlgg-PyZgONUPo7pkieXf-wRqfODyiKoKVWWuiag==&prot=gAAAAABnxDh5F7QlMPRU6RGgLaEQbgkDB3BzlQX0lP-QQJyDPcceJOnACAs_7n7y4iiGM96kK5B5XdIU9Q9CR9pd_YYJ3BZUxg==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:52:41",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDh5BZTtePgUddqfWT2dWL5TsXMnVGxxbi-sI9Y4MQmwkUOWHrKlgg-PyZgONUPo7pkieXf-wRqfODyiKoKVWWuiag==&prot=gAAAAABnxDh5F7QlMPRU6RGgLaEQbgkDB3BzlQX0lP-QQJyDPcceJOnACAs_7n7y4iiGM96kK5B5XdIU9Q9CR9pd_YYJ3BZUxg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDffjsRV9Teg7FeodsghPi8ruM4PU3GLrIMfuQYd3qAzdsLZPiMKEIeeKQJuYJNBop_oLhJSP8hz7dybuJ5IKoAkQw==&prot=gAAAAABnxDffhjisuYMuWebK7SEd4xjFMN0aCl9HDXrFFWAwINUMGcXEG8ZfXiUpsyhc0PlRDK7z0NOUGc6X7vGygfAkKwepfw==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:50:07",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDffjsRV9Teg7FeodsghPi8ruM4PU3GLrIMfuQYd3qAzdsLZPiMKEIeeKQJuYJNBop_oLhJSP8hz7dybuJ5IKoAkQw==&prot=gAAAAABnxDffhjisuYMuWebK7SEd4xjFMN0aCl9HDXrFFWAwINUMGcXEG8ZfXiUpsyhc0PlRDK7z0NOUGc6X7vGygfAkKwepfw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDe-gWCfbsAoia8sdLe-54IX9ButPu47cTEq-kKYBw46VvkYCP3p3D7B4tA5WUg6kSIur9ds909JN3UQIsJar0393A==&prot=gAAAAABnxDe-_YuLCONLmKVn30CV0agfokzyYcI-2aZ9d9_ckZWpPImKIhs8g-NSViK61x5JJLzA7kxiyEGJjomrtmgp1rYUKg==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:49:34",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDe-gWCfbsAoia8sdLe-54IX9ButPu47cTEq-kKYBw46VvkYCP3p3D7B4tA5WUg6kSIur9ds909JN3UQIsJar0393A==&prot=gAAAAABnxDe-_YuLCONLmKVn30CV0agfokzyYcI-2aZ9d9_ckZWpPImKIhs8g-NSViK61x5JJLzA7kxiyEGJjomrtmgp1rYUKg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDcZHd88vpCKLuuyW9GzCFJov0M_TTqr8fpumuK4bJOh8CJVILGfJoig3v_obcqzC3LTsn4kRS-5tLh4Ho5kJgyW1A==&prot=gAAAAABnxDcZJqhJ0nEbf2yiS8vPtPD0n8JJeDFp5Tykz5yjJiRyIAURUq109hMokxbzKV5iRJ85gv5pDJGxa-pExzqJHxTuBg==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:46:49",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDcZHd88vpCKLuuyW9GzCFJov0M_TTqr8fpumuK4bJOh8CJVILGfJoig3v_obcqzC3LTsn4kRS-5tLh4Ho5kJgyW1A==&prot=gAAAAABnxDcZJqhJ0nEbf2yiS8vPtPD0n8JJeDFp5Tykz5yjJiRyIAURUq109hMokxbzKV5iRJ85gv5pDJGxa-pExzqJHxTuBg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDZ0ii035thOy5J281ReFu_TDmRG1Muvn1GXN6q-IqwStLLOJrz9ODtF3ZQEQHdMzs9Du-rdoRiK6I8RnVcX8UR_Dw==&prot=gAAAAABnxDZ0jXGz3I9-54cKZzoLZMA1J98A593a_Y_8Ba6swgY1BsFEjZu2a9B6v1annv4lbC6Y5hgFWgZA8wfn7f3xp_Q8hg==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:44:04",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDZ0ii035thOy5J281ReFu_TDmRG1Muvn1GXN6q-IqwStLLOJrz9ODtF3ZQEQHdMzs9Du-rdoRiK6I8RnVcX8UR_Dw==&prot=gAAAAABnxDZ0jXGz3I9-54cKZzoLZMA1J98A593a_Y_8Ba6swgY1BsFEjZu2a9B6v1annv4lbC6Y5hgFWgZA8wfn7f3xp_Q8hg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDZPs1ks8LenQxuzyvH0jZn7cIajwqozmzT_Y-xyS__vIu0s4Gzjau6SdEYgWmOb8f3Dh_3K_WmO7AWdnYgrXmqcGw==&prot=gAAAAABnxDZPy_Mfgdxrs7tZvUjQNKRERrjvrV5ziPB-7PiUWz04G4b1azeYXR67kVygIfNZ3FmAxWlpuUkn-i3xmAL1jYyoiA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:43:27",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDZPs1ks8LenQxuzyvH0jZn7cIajwqozmzT_Y-xyS__vIu0s4Gzjau6SdEYgWmOb8f3Dh_3K_WmO7AWdnYgrXmqcGw==&prot=gAAAAABnxDZPy_Mfgdxrs7tZvUjQNKRERrjvrV5ziPB-7PiUWz04G4b1azeYXR67kVygIfNZ3FmAxWlpuUkn-i3xmAL1jYyoiA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDYZjKohyis7n1Ul7xzzNtdQ3mumjfoPQd-tS0hWlc5TGpZxidjt5d0WnVCcue8MdygEWNi_qb-6giEB0gHuHIT6bA==&prot=gAAAAABnxDYZnbkJBNSd0WV3yPAHMDPRjp7qA1by0J1s5U0p11-CCmhPcH4ZlMql6dilJl9QYUVlSfTKLS4AyDGYoOC1puR1pQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:42:33",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDYZjKohyis7n1Ul7xzzNtdQ3mumjfoPQd-tS0hWlc5TGpZxidjt5d0WnVCcue8MdygEWNi_qb-6giEB0gHuHIT6bA==&prot=gAAAAABnxDYZnbkJBNSd0WV3yPAHMDPRjp7qA1by0J1s5U0p11-CCmhPcH4ZlMql6dilJl9QYUVlSfTKLS4AyDGYoOC1puR1pQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg",
+                "csrf": "gAAAAABnxDYMCdOweXksZqJVf8UzIR77KKn-xHVw0psyjybWGC4zGVP7qPcb0thsnQH11DSLzMeaN8VA2QztgOESIauWAcRAI_rCpYWg_Lc_7sqTu1HTVgqe2uiWPDk_B28msOt9OMHOECfjTm9OdoGrMq8QIoPiG0Gd-ZAvOHK0IHC4dY8OUfRc5Uvcu35VR-VC2i1lMXWOWrSVHhUpm-xssmq6p1MklV7_BC5d0_WXqVPsufuS1fFsnSeA9EoZENcFBwDSC0K2P__iJn2aiihUpR6Wj5-m---jXrk9h7a1M0143wxorSY="
+            },
             "status_code": 400,
             "endpoint": {
                 "path": "/login",
                 "method": "POST",
                 "body": {
-                    "data": "aleks@abv.bg"
+                    "email": "df_er@abv.bg",
+                    "password": "12132123qaah"
                 }
             },
-            "time": "16/02/2025 11:53:28",
-            "input_type": [
-                "email"
+            "time": "02/03/2025 11:42:20",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123qaah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDWzaxpxOCAdTp8GyxrIPYV3dZI8D2sTBUzGTkzkFalTlhHcs74XVnKa56z18aUuA_YV8nbMYFQjMMS4MFD0crhoJw==&prot=gAAAAABnxDWzHG4KT0-dxHRjGWNsDhsLcyN3L2PzeDkHXoT2aajJKL0QaJIbA1k9rAcqh0QRxL7HFAZhUP4SpHN4rxQSrdsyyw==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:40:51",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDWzaxpxOCAdTp8GyxrIPYV3dZI8D2sTBUzGTkzkFalTlhHcs74XVnKa56z18aUuA_YV8nbMYFQjMMS4MFD0crhoJw==&prot=gAAAAABnxDWzHG4KT0-dxHRjGWNsDhsLcyN3L2PzeDkHXoT2aajJKL0QaJIbA1k9rAcqh0QRxL7HFAZhUP4SpHN4rxQSrdsyyw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDVGTRsHmoZZA-6TJT3S-mXys3WsQ9UgmwMnjvQcfWKtbpxkC6fTUr4BD5XdUEBNygmDN-EJO5tdx1fchzq9yJuMdA==&prot=gAAAAABnxDVG1Drgq-toViKvAacBDAeQrT2GsXiR363daVMIakUNo8ZNHj-CLimtt4AHT6jbVDvw7XhyOwOtMmUfT3mSElNczA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:39:02",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDVGTRsHmoZZA-6TJT3S-mXys3WsQ9UgmwMnjvQcfWKtbpxkC6fTUr4BD5XdUEBNygmDN-EJO5tdx1fchzq9yJuMdA==&prot=gAAAAABnxDVG1Drgq-toViKvAacBDAeQrT2GsXiR363daVMIakUNo8ZNHj-CLimtt4AHT6jbVDvw7XhyOwOtMmUfT3mSElNczA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDUaYS3x179zJ5BPmH7X6fT4npGld8Nsx9oejUCpBe_lf92KjYAU5OcYty-FwALwE_6nDn_-tA6n7lMQ6LhWjQxqgQ==&prot=gAAAAABnxDUa0cUkeZrncP-fZvQD8cCe6mAsiwhLcuZnKnn1mRyKTR3Uy9nKNLNirWBAnVZ0KksQzxqSgW7QhR8u4DFLDgObWQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:38:18",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDUaYS3x179zJ5BPmH7X6fT4npGld8Nsx9oejUCpBe_lf92KjYAU5OcYty-FwALwE_6nDn_-tA6n7lMQ6LhWjQxqgQ==&prot=gAAAAABnxDUa0cUkeZrncP-fZvQD8cCe6mAsiwhLcuZnKnn1mRyKTR3Uy9nKNLNirWBAnVZ0KksQzxqSgW7QhR8u4DFLDgObWQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDQaPbYG5nvAQ-vHnnSYhfvLbmF798NCwRChE-7jNxz9CEbpoZgGpUI3jG5TC4_EsmWvo1grwgssH4HaSaggoarQlQ==&prot=gAAAAABnxDQa91D_xrss0HXVEwPFfenReY3ZK70iILef9GW-4NNINmmUDWsCTxhO94oMqKq_-t5Z3UNj8Gz47jtYR8NDfZ3TYA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:34:02",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDQaPbYG5nvAQ-vHnnSYhfvLbmF798NCwRChE-7jNxz9CEbpoZgGpUI3jG5TC4_EsmWvo1grwgssH4HaSaggoarQlQ==&prot=gAAAAABnxDQa91D_xrss0HXVEwPFfenReY3ZK70iILef9GW-4NNINmmUDWsCTxhO94oMqKq_-t5Z3UNj8Gz47jtYR8NDfZ3TYA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDMKS9FJy2Je3qL6pL5Zjtf3AOZWzuhua-zBDo6C8NkQf3sdfP4UsTbNp2p10dOfDvunHDwPOZFYm1hezjC7dVgN7Q==&prot=gAAAAABnxDMKwx3UV6jcUOtq5dlsc2xoeKDIRTdiPfwlQHhVa7zlbHAmgyp3jmfbWjrftx2K-JUhR0kXLdhfFMwRUDKOuoDnNA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:29:30",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDMKS9FJy2Je3qL6pL5Zjtf3AOZWzuhua-zBDo6C8NkQf3sdfP4UsTbNp2p10dOfDvunHDwPOZFYm1hezjC7dVgN7Q==&prot=gAAAAABnxDMKwx3UV6jcUOtq5dlsc2xoeKDIRTdiPfwlQHhVa7zlbHAmgyp3jmfbWjrftx2K-JUhR0kXLdhfFMwRUDKOuoDnNA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDIf05QVKJyO6LlUaC65DvvcyB2d0n13i2qO34R8-CIzOKoYsD5Q8MvgIivpr0j-1ApcjSPNval2QaP-YOD4NvcGSg==&prot=gAAAAABnxDIfyI8b77u_jtfoRjkSjUjsA2pqL0BI7TBLyAjMRoqI8bGUKzX3lZ9dSNTFYk-NANcj8Nxuw3lhpmM1egJA30Eydg==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:25:35",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDIf05QVKJyO6LlUaC65DvvcyB2d0n13i2qO34R8-CIzOKoYsD5Q8MvgIivpr0j-1ApcjSPNval2QaP-YOD4NvcGSg==&prot=gAAAAABnxDIfyI8b77u_jtfoRjkSjUjsA2pqL0BI7TBLyAjMRoqI8bGUKzX3lZ9dSNTFYk-NANcj8Nxuw3lhpmM1egJA30Eydg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDGYgyWGrviW-uQ_NFU4ERwdCYb8C_8RLy_qbDrs9XA65dpJHKtp4bEBW1FATEQC1Dup-3Ywgd8GEtjnQVS0RmEprA==&prot=gAAAAABnxDGYwXSfE-HMLVSfF7_8MgCz2HpdYAYQu5z9v9Zhov27J3Uiae-6Sf0qpiRVlAZ7g8jNJqOpkJMLE86_KkEyoUxe0Q==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:23:20",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDGYgyWGrviW-uQ_NFU4ERwdCYb8C_8RLy_qbDrs9XA65dpJHKtp4bEBW1FATEQC1Dup-3Ywgd8GEtjnQVS0RmEprA==&prot=gAAAAABnxDGYwXSfE-HMLVSfF7_8MgCz2HpdYAYQu5z9v9Zhov27J3Uiae-6Sf0qpiRVlAZ7g8jNJqOpkJMLE86_KkEyoUxe0Q==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDEkQ_n1VuJb7AyGf6EKeQHiRVjRXuTpkAut1A3X4eq7FOrdqGSp0fy3mTMiAUfXgmEsP1wBf7SZgZDwHyDcoleINg==&prot=gAAAAABnxDEkzkGdw3837VvhUPCYNPI3FuTXSWHLsEA1ziVV2QJlaC7AT718ZKP6ezSDxYwkzNCBophEW58F_uMJ_GYvQfhjQQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:21:24",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDEkQ_n1VuJb7AyGf6EKeQHiRVjRXuTpkAut1A3X4eq7FOrdqGSp0fy3mTMiAUfXgmEsP1wBf7SZgZDwHyDcoleINg==&prot=gAAAAABnxDEkzkGdw3837VvhUPCYNPI3FuTXSWHLsEA1ziVV2QJlaC7AT718ZKP6ezSDxYwkzNCBophEW58F_uMJ_GYvQfhjQQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDC6Y2NNtSfLC2GA6VR45S1w4GZkLxEPxr8qH7_5siRDs6Vwtz3erTmXon5fs0vrmtIcgZPSoUvxyn_B24OOYbIYAw==&prot=gAAAAABnxDC66YC0DxkqqAo4BKOFV_U7SpYj6OhEsyvl9yZ_Q19Uk-4c1yVAGbHX-LOG9zsDBM70W30LHI_-95AMsXYaBtShrQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:19:38",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDC6Y2NNtSfLC2GA6VR45S1w4GZkLxEPxr8qH7_5siRDs6Vwtz3erTmXon5fs0vrmtIcgZPSoUvxyn_B24OOYbIYAw==&prot=gAAAAABnxDC66YC0DxkqqAo4BKOFV_U7SpYj6OhEsyvl9yZ_Q19Uk-4c1yVAGbHX-LOG9zsDBM70W30LHI_-95AMsXYaBtShrQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "02/03/2025 11:19:21",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDCAQpEXItovZy0kCNgnGj02tM-ogXM_s1HQCV4YKAHqhDZILrQo3w8u5yjFmBAcZ-ZW-2QgK2VvpRfVsclKGQq-dA==&prot=gAAAAABnxDCAPEdEx-I2NcYN1k9b1fs-CHzhC8jyBdc35wUzVpbI_imGMEgJT69IjFHvevIcM5O9aAkVv8lZsRCnIp0NCxNGnA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:18:40",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDCAQpEXItovZy0kCNgnGj02tM-ogXM_s1HQCV4YKAHqhDZILrQo3w8u5yjFmBAcZ-ZW-2QgK2VvpRfVsclKGQq-dA==&prot=gAAAAABnxDCAPEdEx-I2NcYN1k9b1fs-CHzhC8jyBdc35wUzVpbI_imGMEgJT69IjFHvevIcM5O9aAkVv8lZsRCnIp0NCxNGnA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDA5mXpXAVc4fs-4giLqzz0R1ThXDYrbH0aolqe9tHufOCxTwdv5s7iH0qCylENKzvLH4j6F1gjCk1wL-A_JTvghhQ==&prot=gAAAAABnxDA5wSX4hshNeesHoqszF_LBFrLugYRXx0nlPs-UBC0S0zkfZe8e6_b-HtoziDU70IXSzwtgLLB--kE4zlFyLjW49g==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:17:29",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDA5mXpXAVc4fs-4giLqzz0R1ThXDYrbH0aolqe9tHufOCxTwdv5s7iH0qCylENKzvLH4j6F1gjCk1wL-A_JTvghhQ==&prot=gAAAAABnxDA5wSX4hshNeesHoqszF_LBFrLugYRXx0nlPs-UBC0S0zkfZe8e6_b-HtoziDU70IXSzwtgLLB--kE4zlFyLjW49g==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDAHgYrjkEK6qTZd_Mb7Ly1ZqnTkFwej9NDBwzbSXigQRbgik85w0JQisy7RcfGT6-lMT-F9Xesph_VMOC5s2Kbn_w==&prot=gAAAAABnxDAHPzMtOIhU7T_pYSBduDk7wWWOAs4h1-2OMqhKnUDxnUXeD1cAoZzIIMpQ2KV1owIC95Xbmg9gEaf3kkQyu8wRsQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:16:39",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxDAHgYrjkEK6qTZd_Mb7Ly1ZqnTkFwej9NDBwzbSXigQRbgik85w0JQisy7RcfGT6-lMT-F9Xesph_VMOC5s2Kbn_w==&prot=gAAAAABnxDAHPzMtOIhU7T_pYSBduDk7wWWOAs4h1-2OMqhKnUDxnUXeD1cAoZzIIMpQ2KV1owIC95Xbmg9gEaf3kkQyu8wRsQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC97NCqFUtsCgHbZJ5QUcT2GlsdUymDeK824dFyIbMeR_9wrC4F2FpFVw2rxUoQ18d1vWzJyMUhqwzqrl7aGlux4gw==&prot=gAAAAABnxC97w3P2iAFFMGyPlkIDmYUQUgqybfvAFNEkK1O_gFlDMN26Egk6i8OJ1_tCzGWyNNChKM939PQ8jsIac6e77WT0xA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:14:19",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC97NCqFUtsCgHbZJ5QUcT2GlsdUymDeK824dFyIbMeR_9wrC4F2FpFVw2rxUoQ18d1vWzJyMUhqwzqrl7aGlux4gw==&prot=gAAAAABnxC97w3P2iAFFMGyPlkIDmYUQUgqybfvAFNEkK1O_gFlDMN26Egk6i8OJ1_tCzGWyNNChKM939PQ8jsIac6e77WT0xA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC9KAcmz255wBp5seDeAZ4xlo2bj-m3qAIN-rYyVANdAlMr_XdnwHtTzX7bqRv4Jqsf8ToWEvhlnHk9LJZ8PLWIGPg==&prot=gAAAAABnxC9KC8gY6ydNFabnT4NNs9kCcQR6_VK4H8QNLaCHspd8OdM6Ze2YAXdqpIIB3w1keUSM898GIeUgkvp7D7c7PRhvIA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:13:30",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC9KAcmz255wBp5seDeAZ4xlo2bj-m3qAIN-rYyVANdAlMr_XdnwHtTzX7bqRv4Jqsf8ToWEvhlnHk9LJZ8PLWIGPg==&prot=gAAAAABnxC9KC8gY6ydNFabnT4NNs9kCcQR6_VK4H8QNLaCHspd8OdM6Ze2YAXdqpIIB3w1keUSM898GIeUgkvp7D7c7PRhvIA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC7jwGjNDHOQ19HYxVhUStb14ICrLU2fbu0haJaNzeupm-zU88hXTVQeaz70zcukplW70G3ay53ROhJmIY7yW7Stcg==&prot=gAAAAABnxC7ji596wwXI__Cgu-zg9SVfrSXj-zwegyexkbFYXxAOiTa_aZVdABqEHhEnMkkU6QODABaBCJw0Mtv_PM4RtaK2SQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:11:47",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC7jwGjNDHOQ19HYxVhUStb14ICrLU2fbu0haJaNzeupm-zU88hXTVQeaz70zcukplW70G3ay53ROhJmIY7yW7Stcg==&prot=gAAAAABnxC7ji596wwXI__Cgu-zg9SVfrSXj-zwegyexkbFYXxAOiTa_aZVdABqEHhEnMkkU6QODABaBCJw0Mtv_PM4RtaK2SQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC6you4USrPkRoCwNfqVLIa57wJn65z7yeVy404psG1_dOb8tYl2Ewf-mltP68A4G1Cat9tolAdOxK0CWIDrDSpNtA==&prot=gAAAAABnxC6ykiYyOQHV6brFN9RWTluxB4nYS5Uy8HVNnF3yr9SluRfBVJoZB2upiautgd2laXEFL5x4FDZmn3tRF1IXtOb7CA==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:10:58",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC6you4USrPkRoCwNfqVLIa57wJn65z7yeVy404psG1_dOb8tYl2Ewf-mltP68A4G1Cat9tolAdOxK0CWIDrDSpNtA==&prot=gAAAAABnxC6ykiYyOQHV6brFN9RWTluxB4nYS5Uy8HVNnF3yr9SluRfBVJoZB2upiautgd2laXEFL5x4FDZmn3tRF1IXtOb7CA==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC5gWO3SK8FIFBKaTW5SdE_ANm35z-otO1fCMfDiXrrpIlBYPB5PHn_Nf8x_jQlC4GlyWTe_X7ALO1inwZRl_i_0Pg==&prot=gAAAAABnxC5gIamM-trLQtLAUdpwthlPOAqjnTMpg0E6QxMad_lCLQP4I2dMDKjxEpSmGZOKJe3YlsoKJ-cnxs9xQmENX9mg0Q==&external=1"
+                }
+            },
+            "time": "02/03/2025 11:09:36",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxC5gWO3SK8FIFBKaTW5SdE_ANm35z-otO1fCMfDiXrrpIlBYPB5PHn_Nf8x_jQlC4GlyWTe_X7ALO1inwZRl_i_0Pg==&prot=gAAAAABnxC5gIamM-trLQtLAUdpwthlPOAqjnTMpg0E6QxMad_lCLQP4I2dMDKjxEpSmGZOKJe3YlsoKJ-cnxs9xQmENX9mg0Q==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxCqhjREMw_tGpZEvYYyu01G50AtDJPhaGUZreOyS-BSxDTBhCxS-L7Q99W3_FDlBmmnty9CiXhkdM0GxY7PmmEdlyA==&prot=gAAAAABnxCqhARMXW6efMaNSo_oncygKNmrh1hVUtRIk_4FrP7mXAQPAJdhEBaxPPgQhJotWwIsHwOhODWw7f9cV51-cmv1Jyg==&external=1"
+                }
+            },
+            "time": "02/03/2025 10:53:37",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxCqhjREMw_tGpZEvYYyu01G50AtDJPhaGUZreOyS-BSxDTBhCxS-L7Q99W3_FDlBmmnty9CiXhkdM0GxY7PmmEdlyA==&prot=gAAAAABnxCqhARMXW6efMaNSo_oncygKNmrh1hVUtRIk_4FrP7mXAQPAJdhEBaxPPgQhJotWwIsHwOhODWw7f9cV51-cmv1Jyg==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxB5z_gwYM0M7WWzNfb1QdoIs_8MLHJ3Mnk3mwYzNPZ_FXKVCgI3wiuZVm1Wg37Z_4xY50wYt6z3J-ttQ8oBSntDlRQ==&prot=gAAAAABnxB5zGW2nI2yItPD420FIyXhbctS5J6QTdivVuWnp6osGSZ38AymqtUJp5NkRk2jmvbm287UELTiQYm9zoqsU1L4OqQ==&external=1"
+                }
+            },
+            "time": "02/03/2025 10:01:39",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxB5z_gwYM0M7WWzNfb1QdoIs_8MLHJ3Mnk3mwYzNPZ_FXKVCgI3wiuZVm1Wg37Z_4xY50wYt6z3J-ttQ8oBSntDlRQ==&prot=gAAAAABnxB5zGW2nI2yItPD420FIyXhbctS5J6QTdivVuWnp6osGSZ38AymqtUJp5NkRk2jmvbm287UELTiQYm9zoqsU1L4OqQ==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxA_NIneRPP3QQ0tubTwvZIINfP8_Gtn73RULYwHNciZolFB3D5qv8ak_fBvqhfQmnd1tTaS29KirTOputGPtT8HoEQ==&prot=gAAAAABnxA_NpjgBv_gtIJGHOZ7Nw6c6iq7YxuG4tLDXbQJO6O13FMLMMQuy99pBIBXNF9_DQHpDL7edCEWu1rAotYelg6_2ag==&external=1"
+                }
+            },
+            "time": "02/03/2025 08:59:09",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxA_NIneRPP3QQ0tubTwvZIINfP8_Gtn73RULYwHNciZolFB3D5qv8ak_fBvqhfQmnd1tTaS29KirTOputGPtT8HoEQ==&prot=gAAAAABnxA_NpjgBv_gtIJGHOZ7Nw6c6iq7YxuG4tLDXbQJO6O13FMLMMQuy99pBIBXNF9_DQHpDL7edCEWu1rAotYelg6_2ag==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxAQAWmtLpdC9raAarD2ilpXzKxXtHWSRxoMapmaOmmkuwkchXMQmEAAg0W9ywJDwl046iNXtHfjqhjih_pgTZ5q9AA==&prot=gAAAAABnxAQA4ZDbCafD7E6kFdX_rI-MfVTQGvWlfGlz5Y9VpVm07H8LR1Gg_k-5fwCEZHwc8-f1cQbqSsrpq0zykUvEQs9SGw==&external=1"
+                }
+            },
+            "time": "02/03/2025 08:08:49",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnxAQAWmtLpdC9raAarD2ilpXzKxXtHWSRxoMapmaOmmkuwkchXMQmEAAg0W9ywJDwl046iNXtHfjqhjih_pgTZ5q9AA==&prot=gAAAAABnxAQA4ZDbCafD7E6kFdX_rI-MfVTQGvWlfGlz5Y9VpVm07H8LR1Gg_k-5fwCEZHwc8-f1cQbqSsrpq0zykUvEQs9SGw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQEIUV0a5Kvhw8P-F1cJ0bd9qinLDTpVbDRzqTw3tHbM3bgg21QUfd-juyOwu6lS8g&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            },
+            "time": "01/03/2025 18:33:54",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQEIUV0a5Kvhw8P-F1cJ0bd9qinLDTpVbDRzqTw3tHbM3bgg21QUfd-juyOwu6lS8g&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQFyiSz4V0HeyBdBpWUsAGtXDaSifQX51HIgGjHyp1WB6nZuvVIsCi67Yt7U8Tc4kQ&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            },
+            "time": "01/03/2025 17:18:58",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQFyiSz4V0HeyBdBpWUsAGtXDaSifQX51HIgGjHyp1WB6nZuvVIsCi67Yt7U8Tc4kQ&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQG0Hhqp8XT0AW-zTbpHWCTMaVQsHqALQZ-tLfSzwwO4_iiiwCNqIR3WsHUwc6ZTbw&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            },
+            "time": "01/03/2025 17:07:32",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQG0Hhqp8XT0AW-zTbpHWCTMaVQsHqALQZ-tLfSzwwO4_iiiwCNqIR3WsHUwc6ZTbw&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQEKMaUVjNbzqcG5TLlC09nh28vQqGch9z5cmjikvqu6Y3ocLpCOwzLNQ2s4rGzVVQ&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            },
+            "time": "01/03/2025 17:06:00",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQEKMaUVjNbzqcG5TLlC09nh28vQqGch9z5cmjikvqu6Y3ocLpCOwzLNQ2s4rGzVVQ&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQH01jsKODBlU0m8Ovg-zdO3TYuF6IqRwJAr4XWWcbN4GNspDcRt-MqvQUJNdIGCmw&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            },
+            "time": "01/03/2025 17:04:59",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?code=4/0AQSTgQH01jsKODBlU0m8Ovg-zdO3TYuF6IqRwJAr4XWWcbN4GNspDcRt-MqvQUJNdIGCmw&scope=email%20profile%20https://mail.google.com/%20https://www.googleapis.com/auth/gmail.readonly%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=0&prompt=consent"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "01/03/2025 10:43:52",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "01/03/2025 10:15:07",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "01/03/2025 09:58:12",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "The password email:  is empty. Please provide password",
+                "csrf": "gAAAAABnwsd_hLUo2bknrnCZ6WcU8g5TU7YR6rK0HByKNyOXNP9IyJWqDgk0J6K3YES1NV_i_oe8OIt3eQh3ZPAJUEOSQTD0ifEmiubk8ProWLWUdFD41QITT-_RIX7_13aQPlprQhHZpDfv9fzClmdd8ER_hG0sL0HQ6WTM_tAgj7Dpcq_zxgUYbaylGoefzJHwG1POEbVgEbSiBuhNKDkkKQMHfsUcba95opNYtcHwsMOd-x0vAAiqWQspswjqX-jHL8NvM2WqYN3N7CxJu5sy6Jz3bYbMlzWqZNetCuZkLgiXbLUlD9k="
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": ""
+                }
+            },
+            "time": "01/03/2025 09:38:23",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": ""
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "01/03/2025 09:36:25",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 15:29:03",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 15:14:41",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 15:13:39",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 15:13:33",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 14:44:13",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/auth",
+                "method": "POST",
+                "body": {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnwGry1eLkXT3zDVDtNH_m-EfIHwLNfDrDdf4L25905zPnQ2rBkiHs6fC0P4uIEIAy36rIaF3m4RjSri7RPDMdrVQAKQ==&prot=gAAAAABnwGry4QSBqXMDIcRJfU4510UkCEZo3YJQJwu0ND_O7oDF9vkp4rmu9EEc6LTUvV4JrXv2P1DHtkT7vNQuJxx6WgwUKw==&external=1"
+                }
+            },
+            "time": "27/02/2025 14:40:53",
+            "input": [
+                {
+                    "pathname": "https://localhost:3000/auth?name=gAAAAABnwGry1eLkXT3zDVDtNH_m-EfIHwLNfDrDdf4L25905zPnQ2rBkiHs6fC0P4uIEIAy36rIaF3m4RjSri7RPDMdrVQAKQ==&prot=gAAAAABnwGry4QSBqXMDIcRJfU4510UkCEZo3YJQJwu0ND_O7oDF9vkp4rmu9EEc6LTUvV4JrXv2P1DHtkT7vNQuJxx6WgwUKw==&external=1"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123123123"
+                }
+            },
+            "time": "27/02/2025 14:26:57",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123123123"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 14:23:21",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 14:22:34",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 14:20:08",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 14:11:12",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12312321312312"
+                }
+            },
+            "time": "27/02/2025 14:08:08",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12312321312312"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "Unauthorized access!",
+            "status_code": 401,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12312321312312"
+                }
+            },
+            "time": "27/02/2025 14:05:45",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12312321312312"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123123124324214qafz"
+                }
+            },
+            "time": "27/02/2025 13:55:47",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123123124324214qafz"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "sfsdfdavdsrsbfghrtsbsfgbsgb"
+                }
+            },
+            "time": "27/02/2025 13:12:14",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "sfsdfdavdsrsbfghrtsbsfgbsgb"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "27/02/2025 13:11:39",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "232342314123412"
+                }
+            },
+            "time": "27/02/2025 12:01:54",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "232342314123412"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "asdasdaefadfgeqra"
+                }
+            },
+            "time": "27/02/2025 12:00:56",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "asdasdaefadfgeqra"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123213"
+                }
+            },
+            "time": "27/02/2025 12:00:04",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123213"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "432rfdghh"
+                }
+            },
+            "time": "27/02/2025 11:47:08",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "432rfdghh"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "jghjfg,jgykgjht"
+                }
+            },
+            "time": "27/02/2025 11:46:36",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "jghjfg,jgykgjht"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "adsdwqdsdafaevvfva"
+                }
+            },
+            "time": "27/02/2025 11:36:33",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "adsdwqdsdafaevvfva"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "sadsafsdafjkhaej"
+                }
+            },
+            "time": "27/02/2025 11:35:19",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "sadsafsdafjkhaej"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "q1231231231231"
+                }
+            },
+            "time": "25/02/2025 22:09:57",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "q1231231231231"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "12132132aah"
+                }
+            },
+            "time": "25/02/2025 11:39:43",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "12132132aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "2312312312"
+                }
+            },
+            "time": "25/02/2025 09:37:42",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "2312312312"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123123"
+                }
+            },
+            "time": "25/02/2025 09:37:15",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123123"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "213123123"
+                }
+            },
+            "time": "25/02/2025 09:36:53",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "213123123"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "213123123"
+                }
+            },
+            "time": "25/02/2025 09:36:52",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "213123123"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123213123123"
+                }
+            },
+            "time": "25/02/2025 09:36:16",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123213123123"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "25/02/2025 09:34:14",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "25/02/2025 09:34:13",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123123"
+                }
+            },
+            "time": "25/02/2025 09:33:24",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123123123123"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "21321312312"
+                }
+            },
+            "time": "25/02/2025 09:31:24",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "21321312312"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "25/02/2025 09:30:53",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12321312312312"
+                }
+            },
+            "time": "25/02/2025 09:25:40",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12321312312312"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12321312312312"
+                }
+            },
+            "time": "25/02/2025 09:25:40",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12321312312312"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "df_er@abv.bg",
+                    "password": "asdaskndjsaKDFNAKFD"
+                }
+            },
+            "time": "21/02/2025 13:12:27",
+            "input": [
+                {
+                    "email": "df_er@abv.bg",
+                    "password": "asdaskndjsaKDFNAKFD"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": {
+                "fail": "b'-ERR Authentication failed.'",
+                "reason": "The credentials provided do not exist in the email provider abv.bg"
+            },
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "123123213213"
+                }
+            },
+            "time": "21/02/2025 13:11:47",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "123123213213"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "b'-ERR Authentication failed.'",
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "21/02/2025 13:10:22",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            ]
+        },
+        {
+            "type": "InputError",
+            "message": "b'-ERR Authentication failed.'",
+            "status_code": 400,
+            "endpoint": {
+                "path": "/login",
+                "method": "POST",
+                "body": {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
+            },
+            "time": "21/02/2025 13:09:01",
+            "input": [
+                {
+                    "email": "aleks@abv.bg",
+                    "password": "12132123aah"
+                }
             ]
         }
     ]
