@@ -1,22 +1,18 @@
-import base64
-import json
 import identity.web
 import requests
-from app.settings import Settings
-from fastapi import  Request, BackgroundTasks
 from app.src.Microsoft.service import MicrosoftService
 from app.src.modules.email import Email
+from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
 
-class MicrosoftSSO():
-    
-    def __init__(self, settings: Settings):
+class Microsoft(ExternalServiceProvider):
+    def __init__(self, settings):
+        super().__init__(settings)
         self.authority =f"https://login.microsoftonline.com/common"
-        self.settings = settings
         self.service = MicrosoftService()
         self.auth: identity.web.Auth = None
-
-
-    async def login(self, request: Request, email: str):
+    
+    
+    async def login(self, data: dict = None, request = None):
         auth = identity.web.Auth(
             session=request.session,
             authority=self.authority,
@@ -28,29 +24,22 @@ class MicrosoftSSO():
             scopes=self.settings.MICROSOFT_SCOPE,
             redirect_uri=self.settings.REDIRECT_URI,
         )
-        redirec_uri = f'{response["auth_uri"]}&login_hint={email}'
-        return redirec_uri
+        redirec_uri = f'{response["auth_uri"]}&login_hint={data["email"]}'
+        return {"redirect_uri": redirec_uri}
 
 
-    def set_auth(self, auth):
-        self.auth = auth
-
-
-    async def logout(self):
-        return self.auth.log_out(self.settings.FRONTEND_URL)
-
-
-    async def callback(self, request: Request):
+    async def callback(self, request):
         body = await request.json()
         login_data = self.service.get_data_for_login(request_body=body)
         result = self.auth.complete_log_in(login_data)
+        print("result")
         if "error" in result:
             raise result["error"]
         user = self.auth.get_user()
         return user["preferred_username"]
 
 
-    async def search_messages(self, background_task: BackgroundTasks):
+    async def get_emails(self):
         token = self.auth.get_token_for_user(self.settings.MICROSOFT_SCOPE)
         endpoint = "https://graph.microsoft.com/v1.0/me/messages"
         headers = {"Authorization": f"Bearer {token['access_token']}"}
@@ -64,13 +53,17 @@ class MicrosoftSSO():
         return parsed_emails
 
 
-    def send_message(self, body):
+    async def send_email(self, data):
         token = self.auth.get_token_for_user(self.settings.MICROSOFT_SCOPE)
         endpoint = "https://graph.microsoft.com/v1.0/me/sendMail"
         headers = {"Authorization": f"Bearer {token['access_token']}", "Content-Type": "application/json"}
-        email_body = self.service.generate_email_body(body=body)
+        email_body = self.service.generate_email_body(body=data)
         response = requests.post(endpoint,headers=headers,json=email_body)
         if response.status_code == 202:
-            return 'SENT'
+            return {"status": 'SENT'}
         else:
-            print(f"Failed to send email. Status code: {response.status_code}, Error: {response.text}")
+            return {"fail": response.text}
+
+
+    def get_email_by_id(self, id):
+        return super().get_email_by_id(id)

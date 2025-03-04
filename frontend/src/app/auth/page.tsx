@@ -3,21 +3,25 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/components/loadingScreen";
+import ExternalServiceHandler from "../ExternalServiceRouterHandler";
 export default function Index() {
-
+    const externalExerivceHandler = ExternalServiceHandler.instance
     const router = useRouter()
     const [username, setUsername] = useState("")
-    const AUTH_URL = "http://127.0.0.1:8000/auth"
 
     const fetchData = async () => {
+        const url = window.location.href
+        const request_body = { pathname: url }
         try {
-            const res = await fetch(AUTH_URL, { method: "POST", body: JSON.stringify({ pathname: window.location.href }) });
-            const data = await res.json();
-            setUsername(data)
-            localStorage.setItem("username", data)
-            setTimeout(() => {
-                redirect(data)
-            }, 1500);
+            const response = await externalExerivceHandler.auth(request_body, new URL("http://127.0.0.1:8000/auth"));
+            if (response) {
+                setUsername(response.email)
+                localStorage.setItem("jwt", response.token)
+                localStorage.setItem("username", response.email)
+                setTimeout(() => {
+                    redirect(response.email)
+                }, 1500);
+            }
         } catch (err) {
             throw err;
         }
@@ -34,6 +38,7 @@ export default function Index() {
     }, [])
     return (
         <div className="w-full h-screen flex justify-center items-center align-center">
+            {/* <div className="animated-block"> </div> */}
             {
                 username !== "" ? (
                     <h1>You have logged in successfully. Welcome to the email client <strong>{username}</strong>.</h1>
