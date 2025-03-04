@@ -12,7 +12,7 @@ class Microsoft(ExternalServiceProvider):
         self.auth: identity.web.Auth = None
     
     
-    async def login(self, email = None, request = None):
+    async def login(self, data: dict = None, request = None):
         auth = identity.web.Auth(
             session=request.session,
             authority=self.authority,
@@ -24,14 +24,15 @@ class Microsoft(ExternalServiceProvider):
             scopes=self.settings.MICROSOFT_SCOPE,
             redirect_uri=self.settings.REDIRECT_URI,
         )
-        redirec_uri = f'{response["auth_uri"]}&login_hint={email}'
-        return redirec_uri
+        redirec_uri = f'{response["auth_uri"]}&login_hint={data["email"]}'
+        return {"redirect_uri": redirec_uri}
 
 
     async def callback(self, request):
         body = await request.json()
         login_data = self.service.get_data_for_login(request_body=body)
         result = self.auth.complete_log_in(login_data)
+        print("result")
         if "error" in result:
             raise result["error"]
         user = self.auth.get_user()
@@ -59,9 +60,9 @@ class Microsoft(ExternalServiceProvider):
         email_body = self.service.generate_email_body(body=data)
         response = requests.post(endpoint,headers=headers,json=email_body)
         if response.status_code == 202:
-            return 'SENT'
+            return {"status": 'SENT'}
         else:
-            print(f"Failed to send email. Status code: {response.status_code}, Error: {response.text}")
+            return {"fail": response.text}
 
 
     def get_email_by_id(self, id):

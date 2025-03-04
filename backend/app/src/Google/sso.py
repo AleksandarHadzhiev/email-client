@@ -13,7 +13,7 @@ class Google(ExternalServiceProvider):
         self.next_page_token = ""
 
 
-    async def login(self, email: str=None, request: Request=None):
+    async def login(self, data: dict=None, request: Request=None):
         google_provider_cfg = self.google_service.get_google_provider_cfg()
         authorization_enpoint = google_provider_cfg["authorization_endpoint"]
         request_uri = self.client.prepare_request_uri(
@@ -22,9 +22,9 @@ class Google(ExternalServiceProvider):
             prompt = 'consent',
             redirect_uri=self.settings.REDIRECT_URI,
             scope=self.settings.GOOGLE_SCOPES,
-            login_hint=email
+            login_hint=data["email"]
         )
-        return request_uri
+        return {"redirect_uri": request_uri}
 
 
     async def callback(self, request: Request):
@@ -33,14 +33,18 @@ class Google(ExternalServiceProvider):
         access_token = self.google_service.get_access_token(body["pathname"])
         user_info = self.google_service.get_user_info(access_token=access_token)
         self.email_service = self.google_service.gmail_authenticate()
-        return user_info.json()["email"]
+        return {"token": access_token, "email": user_info.json()["email"]} 
 
 
     async def send_email(self, data):
-        return self.email_service.users().messages().send(
+        google_response =  self.email_service.users().messages().send(
             userId="me",
             body = self.google_service.send_message(email_service=self.email_service, body=data)
         ).execute()
+        labels: list = google_response['labelIds']
+        if 'SENT' in labels:
+            return {"status": 'SENT'}
+        return {"status": 'FAIL'}
 
 
     async def get_emails(self):
