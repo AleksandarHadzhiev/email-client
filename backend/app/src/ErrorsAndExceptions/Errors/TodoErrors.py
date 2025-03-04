@@ -35,7 +35,7 @@ class Error():
         pass
 
 
-    def get_error(self):
+    def as_response(self):
         current_datetime = datetime.now()
         formated_datetime = current_datetime.strftime("%d/%m/%Y %H:%M:%S")
         

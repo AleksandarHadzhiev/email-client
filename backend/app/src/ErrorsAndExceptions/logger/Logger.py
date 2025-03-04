@@ -1,5 +1,6 @@
-from datetime import datetime
 import json
+import logging
+
 
 class SingletonMeta(type):
     _instances = {}
@@ -14,13 +15,12 @@ class SingletonMeta(type):
 class CustomLogger(metaclass=SingletonMeta):
     
     def log_error(self, error=None):
-
         error_data = error
-
         with open("errors.json") as f:
             json_data = json.load(f)
 
         json_data["errors"].insert(0, error_data)
 
+        error_data = json_data
         with open('errors.json', "w",) as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=4)
+            json.dump(error_data, f, ensure_ascii=False, indent=4)
