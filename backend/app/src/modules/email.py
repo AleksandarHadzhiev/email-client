@@ -1,6 +1,8 @@
 import base64
+import email
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
+import quopri
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
 from base64 import urlsafe_b64encode
@@ -193,3 +195,84 @@ class Email():
         decoded_data = base64.b64decode(data)
         soup = BeautifulSoup(decoded_data, "lxml")
         return str(soup.body)
+
+
+    def get_email_content_for_pop3(self, emails: list[bytes], messages: list):
+        times = 0
+        elements = []
+        for msg in emails:
+            body_element = msg.decode()
+            elements = self._get_body_content(msg=msg, elements=elements)
+            if "Content-Transfer-Encoding" in body_element:
+                times+=1
+                if times == 2:
+                    elements.clear()
+            self._set_abv_mail_headers(msg=msg)
+        message = self._form_email(elements=elements)
+        messages.append(message)
+        return messages
+
+
+    def _set_abv_mail_headers(self, msg):
+        mail = email.message_from_bytes(msg)
+        keys = mail.keys()
+        self._get_sender(keys, mail)
+        if "Date" in keys:
+            self.date = mail['Date']
+        self._get_subject(keys, mail)
+
+
+    def _get_body_content(self, msg: bytes, elements: list):
+        if msg.decode() is not None:
+            body_element = msg.decode()
+            if "Part" not in body_element and "--=" not in body_element and "-- =" not in body_element:
+                if body_element.endswith("="):
+                    body_element = body_element.removesuffix("=")
+                elements.append(body_element)
+        return elements
+
+
+    def _get_sender(self, keys, mail):
+        sender = ""
+        if 'From' in keys:
+            email_address=""
+            sender = str(mail['From'])
+            if "=?UTF-8?B?" in mail["From"]:
+                _email = str(sender).split('<', 1)
+                email_address = f"<{_email[1]}"
+                sender = sender.replace("=?UTF-8?B?", "")
+                sender = base64.b64decode(sender).decode()
+            else:
+                sender = mail['From']
+            self.sender = f"{sender} {email_address}"
+
+
+    def _get_subject(self, keys, mail):
+        subject = ""
+        if 'Subject' in keys:
+            subject = str(mail['Subject'])
+            if "=?UTF-8?B?" in mail["Subject"]:
+                subject = subject.replace("=?UTF-8?B?", "")
+                subject = base64.b64decode(subject).decode()
+            elif "=?utf-8?Q?" in mail["Subject"]:
+                subject = subject.replace("=?utf-8?Q?", "")  
+                subject = quopri.decodestring(subject).decode()
+            self.subject = subject
+
+
+    def _form_email(self, elements):
+
+        try:
+            joined_str = quopri.decodestring("".join(elements)).decode(errors="ignore")
+        except:
+            joined_str = "".join(elements)
+        body = joined_str
+        message = {
+            "from": self.sender,
+            "date": self.date,
+            "subject": self.subject,
+            "body_preview": "Something",
+            "body": body,
+            "attachments": []
+        }
+        return message
