@@ -1,25 +1,35 @@
 export default class RoutersHandler {
 
-    constructor(private url: URL) {
+    constructor(private url: URL, private token: any) {
     }
 
     async getHTTPMethod() {
-        await fetch(this.url).then(async (res) => {
+        const headers = this.token ? { 'csrf': this.token } : undefined
+        const res = await fetch(this.url, { method: "GET", headers: headers }).then(async (res) => {
             const status = res.status
             if (status == 200) {
                 return await res.json()
             }
-            else if (status == 204) {
-                return []
-            }
             else {
-                return res.json()
+                return await res.json()
             }
-        })
+        }).catch((err) => { alert(err) })
+        return res
     }
 
     async postHTTPMethod(data: any) {
-        const res = await fetch(this.url, { method: "POST", body: JSON.stringify(data) });
+        const res = await fetch(this.url, { method: "POST", body: JSON.stringify(data), headers: { 'csrf': this.token } })
+            .then(async (res) => {
+                const status = res.status
+                if (status == 200) {
+                    return await res.json()
+                }
+                else {
+                    return await res.json()
+                }
+            }).catch((err) => {
+                alert(err)
+            });
         return res;
     }
 
@@ -28,7 +38,7 @@ export default class RoutersHandler {
             const data = res
             return data
         }).catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
 
