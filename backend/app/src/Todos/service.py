@@ -4,7 +4,8 @@ from fastapi import Depends, HTTPException, status
 from sqlmodel import Session, select
 from app.db import DBConnector
 from app.src.modules.todo_model import TodoModel
-
+from app.src.validations.validation_factory import ValidationFactory
+from app.src.DTOs.base import BaseDTO
 
 db = DBConnector()
 SessionDep = Annotated[Session, Depends(db.get_session)]
@@ -16,13 +17,18 @@ class ToDoService():
         self.settings = settings
 
 
-    def create_todo(self, body, session):
-        self._input_validation(body=body)
+    def create_todo(self, body: BaseDTO, session):
+        factory = ValidationFactory(incoming_data=body)
+        validation = factory.get_the_needed_type_of_validation()
+        dict_format = body.get_values_as_dict()
+        response = validation.get_data_if_valid(data=dict_format)
+        if "fail" in response:
+            return response
         todo = TodoModel(
-            email=body["email"],
-            title=body["title"],
-            description=self._get_todo_description(body=body),
-            due_date=self._get_todo_due_date(body=body),
+            email=dict_format["email"],
+            title=dict_format["title"],
+            description=self._get_todo_description(body=dict_format),
+            due_date=self._get_todo_due_date(body=dict_format),
         )
         return self._store_todo_in_db(session=session, todo=todo)
 
@@ -76,8 +82,8 @@ class ToDoService():
 
 
     def _get_todo_due_date(self, body):
-        if 'due_date' in body:
-            return body["due_date"]
+        if 'date' in body:
+            return body["date"]
         return ""
 
 
@@ -87,7 +93,7 @@ class ToDoService():
             session.commit()
             session.refresh(todo)
             if todo.id != None:
-                return todo
+                return {"message": "Added task to your list"}
         except:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
@@ -125,17 +131,22 @@ class ToDoService():
 
 
     def delete(self, id, session: SessionDep):
-        todo = self.get_todo_by_id(id=id)
+        todo = self.get_todo_by_id(id=id, session=session)
         session.delete(todo)
         session.commit()
 
 
-    def edit_todo(self, id:int, body, session: SessionDep):
+    def edit_todo(self, id:int, body: BaseDTO, session: SessionDep):
         todo = self.get_todo_by_id(id=id, session=session)
-        self._validate_title(body=body)
-        todo.title=body["title"],
-        todo.description=self._get_todo_description(body=body),
-        todo.due_date=self._get_todo_due_date(body=body),
+        factory = ValidationFactory(incoming_data=body)
+        validation = factory.get_the_needed_type_of_validation()
+        dict_format = body.get_values_as_dict()
+        response = validation.get_data_if_valid(data=dict_format)
+        if "fail" in response:
+            return response
+        todo.title=dict_format["title"]
+        todo.description=self._get_todo_description(body=dict_format)
+        todo.due_date=self._get_todo_due_date(body=dict_format)
         session.commit()
         session.refresh(todo)
-        return todo
+        return {"message": "Editted task to your list"}

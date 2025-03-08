@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import ExternalServiceHandler from '@/app/ExternalServiceRouterHandler';
+import ExternalServiceHandler from '../../APICalls/ExternalServiceRouterHandler';
 
 //@ts-ignore
 export default function SendMessage({ setSendMessageIsActivated }) {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/components/loadingScreen";
-import ExternalServiceHandler from "../ExternalServiceRouterHandler";
+import ExternalServiceHandler from "../../APICalls/ExternalServiceRouterHandler";
 export default function Index() {
     const externalExerivceHandler = ExternalServiceHandler.instance
     const router = useRouter()

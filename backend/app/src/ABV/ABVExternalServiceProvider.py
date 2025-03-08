@@ -8,18 +8,6 @@ import poplib, email
 from cryptography.fernet import Fernet
 from app.src.modules.email import Email
 
-# user = "df_er@abv.bg"
-# passwrod = "12132123aah"
-
-# Mailbox = poplib.POP3_SSL(host="pop3.abv.bg", port=995)
-# Mailbox.user(user=user)
-# Mailbox.pass_(pswd=passwrod)
-# NumOfMessages = len(Mailbox.list()[1])
-# for i in range(NumOfMessages):
-#     for msg in Mailbox.retr(i+1)[1]:
-#         print(msg)
-# Mailbox.quit()
-# print(NumOfMessages)
 
 class ABV(ExternalServiceProvider):
     def __init__(self, settings):
@@ -67,15 +55,12 @@ class ABV(ExternalServiceProvider):
         pathname = body["pathname"]
         parse_res = urlparse(pathname)
         query_params = parse_qs(parse_res.query)
-        print("PARAMS")
-        print(query_params)
         email = query_params["name"][0]
         return email
 
 
     def _generate_jwt(self, email):
         decrypted_email = self.fernet.decrypt(email).decode()
-        print(decrypted_email)
         payload = {
             "email": decrypted_email,
             "exp": datetime.now(timezone.utc) + timedelta(seconds=3)
@@ -90,7 +75,6 @@ class ABV(ExternalServiceProvider):
         NumOfMessages = len(self.mailbox.list()[1])
         messages = []
         for i in range(NumOfMessages):
-            print(f"I: {i}")
             emails = self.mailbox.retr(i+1)[1]
             messages = Email("", email_service="").get_email_content_for_pop3(emails=emails, messages=messages)
         return messages

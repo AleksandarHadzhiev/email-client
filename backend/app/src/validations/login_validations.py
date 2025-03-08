@@ -36,7 +36,6 @@ class EmailAndPasswordValidation(BaseEmailValidation):
 
 
     def get_data_if_valid(self, data)-> dict:
-        print(f"DATA: {data}")
         response =self._email_validation(email=data["email"])
         if "fail" in response:
             return response

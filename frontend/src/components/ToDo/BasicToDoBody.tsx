@@ -1,6 +1,6 @@
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react"
 import ToDoComponent from "./ToDoComponent"
-
+import TodosRouterHanlder from "@/APICalls/TodosRouterHandler"
 
 //@ts-ignore
 export default function BasicToDoBody({ todos, setIsOpened, setTodo, setTrigeredEvent }) {
@@ -8,16 +8,15 @@ export default function BasicToDoBody({ todos, setIsOpened, setTodo, setTrigered
         setIsOpened(true)
         setTodo(todo)
     }
+    const router = TodosRouterHanlder.instance
 
-    const DELETE_TODO_URL = "http://127.0.0.1:8000/todo/"
+    const DELETE_TODO_URL = "http://127.0.0.1:8000/todos/"
 
     async function deleteToDo(id: Number) {
-        await fetch(DELETE_TODO_URL + id.toString(), { method: "DELETE" }).then(async (res) => {
-            const data = await res.json()
-            setTrigeredEvent("delete")
-        }).catch((err) => {
-            alert(err)
-        })
+        const isDeleted = await router.deleteTodo(new URL(`${DELETE_TODO_URL}${id}`))
+        if (isDeleted == true) {
+            setTrigeredEvent(`deleted ${id}`)
+        }
     }
 
     return (

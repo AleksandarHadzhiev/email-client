@@ -1,13 +1,12 @@
 import { useState } from "react"
-
+import TodosRouterHanlder from "@/APICalls/TodosRouterHandler"
 //@ts-ignore
 export default function FullToDoContent({ todo, setIsOpened, setTrigeredEvent }) {
-
+    const todoHandler = TodosRouterHanlder.instance
     const [title, setTitle] = useState(todo.title)
     const [desc, setDesc] = useState(todo.desc)
     const [date, setDate] = useState(todo.due)
-    const CREATE_TODO_URL = "http://127.0.0.1:8000/todo/"
-
+    const TODO_URL = "http://127.0.0.1:8000/todos/"
     const editToDo = (id: Number) => {
         const todo = {
             "title": title,
@@ -19,12 +18,16 @@ export default function FullToDoContent({ todo, setIsOpened, setTrigeredEvent })
     }
 
     const post = async (todo: { title: string; description: string; due_date: string; email: string }, id: String) => {
-        await fetch(CREATE_TODO_URL + id, { method: "PUT", body: JSON.stringify(todo) }).then(async (res) => {
-            const data = await res.json()
+        const is_edited = await todoHandler.updateTodo(new URL(`${TODO_URL}${id}`), todo)
+        if (is_edited) {
             setTrigeredEvent("edit")
-        }).catch((err) => {
-            alert(err)
-        })
+        }
+        // await fetch(TODO_URL + id, { method: "PUT", body: JSON.stringify(todo) }).then(async (res) => {
+        //     const data = await res.json()
+        //     setTrigeredEvent("edit")
+        // }).catch((err) => {
+        //     alert(err)
+        // })
     }
 
     // 323232 / 292929 / 272727 / 222222

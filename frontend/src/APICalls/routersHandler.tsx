@@ -34,16 +34,33 @@ export default class RoutersHandler {
     }
 
     async delteHTTPMethod() {
-        await fetch(this.url, { method: "DELETE" }).then(async (res) => {
-            const data = res
-            return data
+        const res = await fetch(this.url, { method: "DELETE" }).then(async (res) => {
+            const status = res.status
+            if (status == 200) {
+                return true
+            }
+            else {
+                return false
+            }
         }).catch((err) => {
             alert(err)
-        })
+        });
+        return res;
     }
 
     async putHTTPMethod(data: any) {
-        const res = await fetch(this.url, { method: "PUT", body: JSON.stringify(data) });
+        const res = await fetch(this.url, { method: "PUT", body: JSON.stringify(data) })
+            .then(async (res) => {
+                const status = res.status
+                if (status == 200) {
+                    return await res.json()
+                }
+                else {
+                    return await res.json()
+                }
+            }).catch((err) => {
+                alert(err)
+            });
         return res;
     }
 }
