@@ -5,7 +5,6 @@ from app.src.ExternalServices.external_service_provider import ExternalServicePr
 from app.src.Factory.ExternalServiceFactory import ExternalServiceFactory
 from app.src.DTOs.login_dto import BaseDTO
 from app.src.validations.base_validation import BaseValidation
-from urllib.parse import parse_qs, urlparse
 from app.src.validations.validation_factory import ValidationFactory
 
 
@@ -38,7 +37,6 @@ class ExternalServicesService():
 
 
     async def _build_external_service(self, dto: BaseDTO) -> dict:
-        print(f"DTO: {dto}")
         factory = ExternalServiceFactory(settings=self.settings, external_service_login=dto)
         external_service_dict = factory.get_external_service_if_in_supported_domain()
         return external_service_dict
@@ -51,7 +49,6 @@ class ExternalServicesService():
     async def auth(self, request: Request):
         external_service = self._get_external_service()
         response = await external_service.callback(request=request)
-        print(f"RESPONSE AUTH: {response}")
         return response
         
 
@@ -62,12 +59,10 @@ class ExternalServicesService():
 
 
     async def send_email(self, body: BaseDTO):
-        print(body)
         factory = ValidationFactory(incoming_data=body)
         email_object_validation = factory.get_the_needed_type_of_validation()
         if issubclass(type(email_object_validation), BaseValidation) == False:
             return email_object_validation
-        print(type(email_object_validation))
         response = email_object_validation.get_data_if_valid(data=body.get_values_as_dict())
         if "fail" in response:
             return response

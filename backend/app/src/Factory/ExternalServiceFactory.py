@@ -18,9 +18,7 @@ class ExternalServiceFactory():
 
     def get_external_service_if_in_supported_domain(self):
         factory = ValidationFactory(incoming_data= self.external_service_login)
-        print(self.external_service_login)
         email = self.external_service_login.email
-        print(f"EMAIL: {email}")
         validation_checker = factory.get_the_needed_type_of_validation()
         if issubclass(type(validation_checker), BaseValidation) == False:
             return validation_checker

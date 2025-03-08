@@ -164,7 +164,6 @@ class Email():
         for part in parts:
             body_of_part = part["body"]
             if 'attachmentId' in body_of_part:
-                print(part)
                 self._get_attachment(part=part)
             else:
                 soup = self._get_body_through_decoding(part=part)

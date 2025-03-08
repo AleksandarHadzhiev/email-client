@@ -32,7 +32,6 @@ class Microsoft(ExternalServiceProvider):
         body = await request.json()
         login_data = self.service.get_data_for_login(request_body=body)
         result = self.auth.complete_log_in(login_data)
-        print("result")
         if "error" in result:
             raise result["error"]
         user = self.auth.get_user()

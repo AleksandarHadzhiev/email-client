@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import MailHeader from "./MailHeader"
 import SendMessage from "./SendMessage"
-import ExternalServiceHandler from "@/app/ExternalServiceRouterHandler"
+import ExternalServiceHandler from "../../APICalls/ExternalServiceRouterHandler"
 //@ts-ignore
 export default function Sidebar({ setMail }) {
     const BASE_URL = "http://localhost:8000/get/mails"

@@ -1,4 +1,4 @@
-import RoutersHandler from "./routersHandler";
+import RoutersHandler from "../APICalls/routersHandler";
 
 export default class ExternalServiceHandler {
 

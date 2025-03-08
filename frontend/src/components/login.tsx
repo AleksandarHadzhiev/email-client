@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ExternalServiceHandler from "@/app/ExternalServiceRouterHandler";
+import ExternalServiceHandler from "../APICalls/ExternalServiceRouterHandler";
 
 export default function Login() {
     const externalExerivceHandler = ExternalServiceHandler.instance

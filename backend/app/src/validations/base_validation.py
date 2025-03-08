@@ -3,5 +3,5 @@ class BaseValidation():
         pass
 
 
-    def get_data_if_valid(self, data):
+    def get_data_if_valid(self, data: dict = None):
         pass

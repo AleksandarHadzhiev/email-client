@@ -5,7 +5,7 @@ import Navbar from "@/components/navigation";
 import Sidebar from "@/components/Emails/sidebar";
 import Login from "@/components/Login";
 import MailBody from "@/components/Emails/MailBody";
-import ExternalServiceHandler from "./ExternalServiceRouterHandler";
+import ExternalServiceHandler from "../APICalls/ExternalServiceRouterHandler";
 export default function Home() {
   let username = ""
   // Get the value from local storage if it exists

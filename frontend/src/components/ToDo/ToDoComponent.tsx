@@ -1,34 +1,35 @@
 import { useState } from "react";
-
+import TodosRouterHanlder from "@/APICalls/TodosRouterHandler";
 //@ts-ignore
 export default function ToDoComponent({ setTrigeredEvent }) {
+    const handler = TodosRouterHanlder.instance
     const [title, setTitle] = useState("")
-    const [desc, setDesc] = useState("")
     const [date, setDate] = useState("")
     const CREATE_TODO_URL = "http://127.0.0.1:8000/todos"
 
     const createToDo = () => {
-        const todo = {
-            "title": title,
-            "description": desc,
-            "due_date": date,
-            "email": "aleks321@gmail.com" // It will be an actual email
+        let todo
+        if (date !== "") {
+            todo = {
+                "title": title,
+                "due_date": date,
+                "email": "aleks321@gmail.com" // It will be an actual email
+            }
+        }
+        else {
+            todo = {
+                "title": title,
+                "email": "aleks321@gmail.com" // It will be an actual email
+            }
         }
         post(todo)
     }
 
-    const post = async (todo: { title: string; description: string; due_date: string; email: string }) => {
-        await fetch(CREATE_TODO_URL, { method: "POST", body: JSON.stringify(todo) }).then(async (res) => {
-            if (res.status != 201) {
-                alert(res)
-            }
-            else {
-                const data = await res.json()
-                setTrigeredEvent("added")
-            }
-        }).catch((err) => {
-            alert(err)
-        })
+    const post = async (todo: any) => {
+        const isCreated = await handler.createTodo(new URL(CREATE_TODO_URL), todo)
+        if (isCreated) {
+            setTrigeredEvent(todo.title)
+        }
     }
 
     return (
