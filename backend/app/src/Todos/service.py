@@ -1,14 +1,8 @@
-from typing import Annotated
-
-from fastapi import Depends, HTTPException, status
-from sqlmodel import Session, select
-from app.db import DBConnector
+from fastapi import HTTPException, status
+from sqlmodel import select
 from app.src.modules.todo_model import TodoModel
 from app.src.validations.validation_factory import ValidationFactory
 from app.src.DTOs.base import BaseDTO
-
-db = DBConnector()
-SessionDep = Annotated[Session, Depends(db.get_session)]
 
 
 class ToDoService():
@@ -104,7 +98,7 @@ class ToDoService():
             )
 
 
-    def get_todos_for_email(self, email, session: SessionDep):
+    def get_todos_for_email(self, email, session):
         self._validate_email(email=email)
         todos = session.exec(select(TodoModel).where(TodoModel.email == email.strip())).all()
         _formated = []
@@ -123,20 +117,20 @@ class ToDoService():
         }
 
 
-    def get_todo_by_id(self, id, session: SessionDep):
+    def get_todo_by_id(self, id, session):
         todo = session.get(TodoModel, id)
         if not todo:
             raise HTTPException(status_code=404, detail="ToDo not found")
         return todo
 
 
-    def delete(self, id, session: SessionDep):
+    def delete(self, id, session):
         todo = self.get_todo_by_id(id=id, session=session)
         session.delete(todo)
         session.commit()
 
 
-    def edit_todo(self, id:int, body: BaseDTO, session: SessionDep):
+    def edit_todo(self, id:int, body: BaseDTO, session):
         todo = self.get_todo_by_id(id=id, session=session)
         factory = ValidationFactory(incoming_data=body)
         validation = factory.get_the_needed_type_of_validation()

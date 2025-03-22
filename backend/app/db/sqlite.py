@@ -1,6 +1,7 @@
 from sqlmodel import create_engine, SQLModel, Session
+from app.db.DBConnector import DBConnector
 
-class DBConnector():
+class SQLiteConnector(DBConnector):
     def __init__(self):
         self.sqlite_file_name = "database.db"
         self.sqlite_url = f"sqlite:///{self.sqlite_file_name}"
@@ -13,7 +14,6 @@ class DBConnector():
         SQLModel.metadata.create_all(self.engine)
 
 
-    def get_session(self):
-        with Session(self.engine) as session:
-            yield session
-    
+    def get_db(self):
+        with Session(self.engine) as db:
+            return db
