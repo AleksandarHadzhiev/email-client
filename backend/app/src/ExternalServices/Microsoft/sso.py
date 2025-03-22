@@ -1,6 +1,6 @@
 import identity.web
 import requests
-from app.src.Microsoft.service import MicrosoftService
+from app.src.ExternalServices.Microsoft.service import MicrosoftService
 from app.src.modules.email import Email
 from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
 

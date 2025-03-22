@@ -1,9 +1,9 @@
-from app.src.Google.sso import Google
-from app.src.Microsoft.sso import Microsoft
+from app.src.ExternalServices.Google.sso import Google
+from app.src.ExternalServices.Microsoft.sso import Microsoft
 from app.src.validations.base_validation import BaseValidation
 from app.src.validations.validation_factory import ValidationFactory
 from app.src.DTOs.login_dto import ExternalServiceLogin
-from app.src.ABV.ABVExternalServiceProvider import ABV
+from app.src.ExternalServices.ABV.ABVExternalServiceProvider import ABV
 
 class ExternalServiceFactory():    
     def __init__(self, external_service_login: ExternalServiceLogin, settings):

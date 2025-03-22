@@ -4,7 +4,7 @@ import secrets
 import jwt
 from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
 from urllib.parse import parse_qs, urlparse
-import poplib, email
+import poplib
 from cryptography.fernet import Fernet
 from app.src.modules.email import Email
 
