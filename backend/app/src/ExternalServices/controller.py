@@ -35,13 +35,6 @@ class ExternalServicesController():
         new_token = self.csrf.provide_ative_token()
         response["csrf"] = new_token["token"]
         return self._handle_basic_response(response=response, _endpoint=endpoint, success_code=status.HTTP_200_OK)
-        # except Exception as e:
-        #     logging.error(e)
-        #     return Error(
-        #         detail=str(e),
-        #         endpoint={"path":f"/login", "method": "POST", "body": body},
-        #         status=status.HTTP_500_INTERNAL_SERVER_ERROR
-        #     ).as_response()
 
 
     def _check_for_authorized_access(self, request: Request, endpoint):
