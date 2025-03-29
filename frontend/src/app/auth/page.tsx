@@ -15,8 +15,9 @@ export default function Index() {
         try {
             const response = await externalExerivceHandler.auth(request_body, new URL("http://127.0.0.1:8000/auth"));
             if (response) {
+                console.log(response)
                 setUsername(response.email)
-                localStorage.setItem("jwt", response.token)
+                localStorage.setItem("jwt", response.access_token)
                 localStorage.setItem("username", response.email)
                 setTimeout(() => {
                     redirect(response.email)

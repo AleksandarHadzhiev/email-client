@@ -34,6 +34,42 @@ export default class ExternalServiceHandler {
         }
     }
 
+    private setAccessToken(body: any) {
+        if ("access_token" in body) {
+            this.accessToken = body.access_token
+        }
+        else {
+            alert("Unsupported error! Please try again later.")
+        }
+    }
+
+    private setRefreshToken(body: any) {
+        if ("refresh_token" in body) {
+            this.refreshToken = body.refresh_token
+        }
+        else {
+            alert("Unsupported error! Please try again later.")
+        }
+    }
+
+    private setExpiresIn(body: any) {
+        if ("expires_in" in body) {
+            this.expiresIn = body.expires_in
+        }
+        else {
+            alert("Unsupported error! Please try again later.")
+        }
+    }
+
+    private setType(body: any) {
+        if ("type" in body) {
+            this.type = body.type
+        }
+        else {
+            alert("Unsupported error! Please try again later.")
+        }
+    }
+
     async login(data: any, url: URL) {
         const routerHandler = new RoutersHandler(url, this.csrf)
         const body = await routerHandler.postHTTPMethod(data = data)
@@ -56,9 +92,14 @@ export default class ExternalServiceHandler {
         const csrf = localStorage.getItem('token') || ""
         localStorage.removeItem('token')
         const routerHandler = new RoutersHandler(url, csrf)
+        console.log(data)
         const body = await routerHandler.postHTTPMethod(data = data)
-        if ("token" in body && "email" in body) {
+        if ("access_token" in body && "email" in body) {
             this.setCSRF(body)
+            this.setAccessToken(body)
+            this.setRefreshToken(body)
+            this.setExpiresIn(body)
+            this.setType(body)
             return body
         }
         else if ("error" in body) {
@@ -73,6 +114,13 @@ export default class ExternalServiceHandler {
 
     async getMails(url: URL) {
         const routerHandler = new RoutersHandler(url, this.csrf)
+        const data = {
+            access_token: this.accessToken,
+            refresh_token: this.refreshToken,
+            expires_in: this.expiresIn,
+            type: this.type
+        }
+        routerHandler.setBodyToBeSend(data)
         const body = await routerHandler.getHTTPMethod()
         if ("mails" in body && "csrf" in body) {
             this.setCSRF(body)

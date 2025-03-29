@@ -1,10 +1,28 @@
 export default class RoutersHandler {
+    private body: any = null
 
     constructor(private url: URL, private token: any) {
     }
 
+    setBodyToBeSend(data: any) {
+        this.body = data
+    }
+
     async getHTTPMethod() {
-        const headers = this.token ? { 'csrf': this.token } : undefined
+        let headers = undefined
+        if (this.token && this.body) {
+            headers = {
+                'access_token': this.body.access_token,
+                'csrf': this.token,
+                'refresh_token': this.body.refresh_token,
+                'expires_in': this.body.expires_in,
+                'type': this.body.type
+            }
+        }
+        else if (this.token && this.body === null) {
+            headers = { 'csrf': this.token }
+        }
+
         const res = await fetch(this.url, { method: "GET", headers: headers }).then(async (res) => {
             const status = res.status
             if (status == 200) {
