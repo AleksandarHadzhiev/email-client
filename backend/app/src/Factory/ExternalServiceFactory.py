@@ -1,4 +1,4 @@
-from app.src.ExternalServices.Google.sso import Google
+from app.src.Login.SSO.Google.main import GoogleProvider
 from app.src.ExternalServices.Microsoft.sso import Microsoft
 from app.src.validations.base_validation import BaseValidation
 from app.src.validations.validation_factory import ValidationFactory
@@ -10,7 +10,7 @@ class ExternalServiceFactory():
         self.external_service_login = external_service_login
         self.settings = settings
         self.supported_domains = {
-            "@gmail.com": Google(settings=settings),
+            "@gmail.com": GoogleProvider(settings=settings),
             "@outlook.com": Microsoft(settings=settings),
             "@abv.bg": ABV(settings=settings),
         }

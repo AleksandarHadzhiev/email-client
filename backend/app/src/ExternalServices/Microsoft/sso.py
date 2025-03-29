@@ -19,7 +19,7 @@ class Microsoft(ExternalServiceProvider):
             client_id=self.settings.MICROSOFT_CLIENT_ID,
             client_credential=self.settings.MICROSOFT_CLIENT_SECRET,
         )
-        self.set_auth(auth=auth)
+        self.auth = auth
         response = auth.log_in(
             scopes=self.settings.MICROSOFT_SCOPE,
             redirect_uri=self.settings.REDIRECT_URI,

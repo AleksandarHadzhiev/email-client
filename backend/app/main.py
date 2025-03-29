@@ -4,7 +4,8 @@ from fastapi import FastAPI, Response
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
-from app.src.ExternalServices.router import ExternalServiceRouter
+from app.src.Email.router import EmailRouter
+from app.src.Login.router import LoginRouter
 from app.src.Todos.router import TodoRouter
 from app.db.sqlite import SQLiteConnector
 from app.src.validations.csrf_protector import CSRFProtector
@@ -18,11 +19,13 @@ csrf_protector = CSRFProtector()
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="session")
 
-external_router = ExternalServiceRouter(settings=settings)
 todo_router = TodoRouter(settings=settings, db=db)
+login_router = LoginRouter(settings=settings)
+email_router = EmailRouter(settings=settings)
 
-app.include_router(external_router.router)
 app.include_router(todo_router.router)
+app.include_router(login_router.router)
+app.include_router(email_router.router)
 origins = [
     "*"
 ]

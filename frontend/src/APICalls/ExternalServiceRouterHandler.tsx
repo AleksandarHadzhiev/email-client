@@ -4,6 +4,10 @@ export default class ExternalServiceHandler {
 
     static #instance: ExternalServiceHandler;
     private csrf: string = "";
+    private accessToken: string = "";
+    private refreshToken: string = "";
+    private expiresIn: string = "";
+    private type: string = "";
 
     private constructor() { }
 
