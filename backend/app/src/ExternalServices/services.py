@@ -13,6 +13,10 @@ class ExternalServicesService():
         self.settings = settings
 
 
+    def _set_external_service(self, external_service: ExternalServiceProvider):
+        self.external_service_provider = external_service
+
+
     def _get_external_service(self) -> ExternalServiceProvider:
         return self.external_service_provider
 
@@ -40,10 +44,6 @@ class ExternalServicesService():
         factory = ExternalServiceFactory(settings=self.settings, external_service_login=dto)
         external_service_dict = factory.get_external_service_if_in_supported_domain()
         return external_service_dict
-
-
-    def _set_external_service(self, external_service: ExternalServiceProvider):
-        self.external_service_provider = external_service
 
 
     async def auth(self, request: Request):

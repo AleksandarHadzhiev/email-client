@@ -1,42 +1,14 @@
 import identity.web
 import requests
-from app.src.Microsoft.service import MicrosoftService
 from app.src.modules.email import Email
-from app.src.ExternalServices.external_service_provider import ExternalServiceProvider
+from app.src.Email.email_provider import EmailProvider
 
-class Microsoft(ExternalServiceProvider):
+
+class Microsoft(EmailProvider):
     def __init__(self, settings):
         super().__init__(settings)
         self.authority =f"https://login.microsoftonline.com/common"
-        self.service = MicrosoftService()
-        self.auth: identity.web.Auth = None
     
-    
-    async def login(self, data: dict = None, request = None):
-        auth = identity.web.Auth(
-            session=request.session,
-            authority=self.authority,
-            client_id=self.settings.MICROSOFT_CLIENT_ID,
-            client_credential=self.settings.MICROSOFT_CLIENT_SECRET,
-        )
-        self.set_auth(auth=auth)
-        response = auth.log_in(
-            scopes=self.settings.MICROSOFT_SCOPE,
-            redirect_uri=self.settings.REDIRECT_URI,
-        )
-        redirec_uri = f'{response["auth_uri"]}&login_hint={data["email"]}'
-        return {"redirect_uri": redirec_uri}
-
-
-    async def callback(self, request):
-        body = await request.json()
-        login_data = self.service.get_data_for_login(request_body=body)
-        result = self.auth.complete_log_in(login_data)
-        if "error" in result:
-            raise result["error"]
-        user = self.auth.get_user()
-        return user["preferred_username"]
-
 
     async def get_emails(self):
         token = self.auth.get_token_for_user(self.settings.MICROSOFT_SCOPE)

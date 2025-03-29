@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navigation";
 import Sidebar from "@/components/Emails/sidebar";
-import Login from "@/components/Login";
+import Login from "@/components/login";
 import MailBody from "@/components/Emails/MailBody";
 import ExternalServiceHandler from "../APICalls/ExternalServiceRouterHandler";
 export default function Home() {

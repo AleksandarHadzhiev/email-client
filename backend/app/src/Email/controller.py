@@ -2,39 +2,57 @@ import json
 import logging
 from fastapi import Request, Response, status
 from googleapiclient.http import HttpError
-from app.src.ExternalServices.services import ExternalServicesService
+from app.src.Email.service import EmailService
 from app.src.ErrorsAndExceptions.Errors.TodoErrors import ErrorResponse
 from app.src.ErrorsAndExceptions.Errors.InputErrors import InputError
 from app.src.DTOs.DTOFactory import DTOFactory
 from app.src.DTOs.login_dto import BaseDTO
 from app.src.validations.csrf_protector import CSRFProtector
 
-class ExternalServicesController():
+class EmailController:
     def __init__(self, settings):
         self.settings = settings
-        self.service = ExternalServicesService(settings=self.settings)
+        self.service = EmailService(settings=self.settings)
         self.csrf = CSRFProtector()
         pass
 
 
-    async def login(self, request: Request):
-        body = await request.json()
-        endpoint={
-            "path": "/login",
-            "method":"POST",
-            "body": body
-        }
-        is_not_authorized = self._check_for_authorized_access(request=request, endpoint=endpoint)
-        if is_not_authorized is not None:
-            return is_not_authorized.as_response()
-        # try:
-        factory = DTOFactory(data=body)
-        loginDTO: BaseDTO = factory.get_dto_based_on_incoming_data()
-        response = await self.service.login(dto=loginDTO, request=request)
-        logging.info(response)
-        new_token = self.csrf.provide_ative_token()
-        response["csrf"] = new_token["token"]
-        return self._handle_basic_response(response=response, _endpoint=endpoint, success_code=status.HTTP_200_OK)
+    async def get_mails(self, request: Request):
+        try:
+            _endpoint={
+                "path": "/get/mails",
+                "method":"GET",
+                "body": []
+            }
+            creds = {
+                "access_token": request.headers.get('access_token'),
+                "refresh_token":  request.headers.get("refresh_token"),
+                "expires_in":  request.headers.get("expires_in"),
+                "type":  request.headers.get("type"),
+            }
+            print("CREDS")
+            print(creds)
+            is_not_authorized = self._check_for_authorized_access(request=request, endpoint=_endpoint)
+            if is_not_authorized is not None:
+                return is_not_authorized.as_response()
+            messages = await self.service.get_mails(request, creds)
+            new_token = self.csrf.provide_ative_token()
+            if messages.__len__() == 0:
+                return Response(
+                content=json.dumps({"mails": messages, "csrf": new_token["token"]}),
+                status_code=status.HTTP_204_NO_CONTENT
+            )
+            return Response(
+                content=json.dumps({"mails": messages, "csrf": new_token["token"]}),
+                status_code=status.HTTP_200_OK
+            )
+        except HttpError as e:
+            logging(e.response.reason)
+            return ErrorResponse(
+                detail=  e.response.reason,
+                endpoint={"path":f"/mails", "method": "GET"},
+                status=e.response.status_code
+            ).response()
 
 
     def _check_for_authorized_access(self, request: Request, endpoint):
@@ -55,69 +73,6 @@ class ExternalServicesController():
                 endpoint=endpoint
             )
         return None
-
-    def _handle_basic_response(self,response: dict, _endpoint: dict, success_code: status) -> Response:
-        if "fail" in response:
-            logging.error(response["fail"])
-            return InputError(
-                input=_endpoint["body"],
-                error_message=response,
-                status=status.HTTP_400_BAD_REQUEST,
-                endpoint=_endpoint,
-            ).as_response()
-        return Response(
-            content=json.dumps(response),
-            status_code=success_code
-        )
-
-
-    async def auth(self, request: Request):
-        try:
-            body = await request.json()
-            _endpoint={
-                "path": "/auth",
-                "method":"POST",
-                "body": body
-            }
-            is_not_authorized = self._check_for_authorized_access(request=request, endpoint=_endpoint)
-            if is_not_authorized is not None:
-                return is_not_authorized.as_response()
-            response = await self.service.auth(request=request)
-            new_token = self.csrf.provide_ative_token()
-            response["csrf"] = new_token["token"]
-            return self._handle_basic_response(response=response, _endpoint=_endpoint, success_code=status.HTTP_200_OK)
-        except Exception as e:
-            logging.exception(e)
-
-
-    async def get_mails(self, request: Request):
-        try:
-            _endpoint={
-                "path": "/get/mails",
-                "method":"GET",
-                "body": []
-            }
-            is_not_authorized = self._check_for_authorized_access(request=request, endpoint=_endpoint)
-            if is_not_authorized is not None:
-                return is_not_authorized.as_response()
-            messages = await self.service.get_mails()
-            new_token = self.csrf.provide_ative_token()
-            if messages.__len__() == 0:
-                return Response(
-                content=json.dumps({"mails": messages, "csrf": new_token["token"]}),
-                status_code=status.HTTP_204_NO_CONTENT
-            )
-            return Response(
-                content=json.dumps({"mails": messages, "csrf": new_token["token"]}),
-                status_code=status.HTTP_200_OK
-            )
-        except HttpError as e:
-            logging(e.response.reason)
-            return ErrorResponse(
-                detail=  e.response.reason,
-                endpoint={"path":f"/mails", "method": "GET"},
-                status=e.response.status_code
-            ).response()
 
 
     async def get_mail(self, id:str):
@@ -173,3 +128,18 @@ class ExternalServicesController():
                 endpoint={"path":f"/send", "method": "POST", "body": body},
                 status=e.status_code
             ).response()
+
+
+    def _handle_basic_response(self,response: dict, _endpoint: dict, success_code: status) -> Response:
+        if "fail" in response:
+            logging.error(response["fail"])
+            return InputError(
+                input=_endpoint["body"],
+                error_message=response,
+                status=status.HTTP_400_BAD_REQUEST,
+                endpoint=_endpoint,
+            ).as_response()
+        return Response(
+            content=json.dumps(response),
+            status_code=success_code
+        )

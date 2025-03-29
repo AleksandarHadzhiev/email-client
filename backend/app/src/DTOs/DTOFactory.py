@@ -20,7 +20,6 @@ class DTOFactory:
 
     def get_dto_based_on_incoming_data(self):
         for dto in self.supported_dtos:
-            
             dto_keys = list(dict(dto[0]).keys())
             incoming_data_keys = list(self.data.keys())
             if incoming_data_keys == dto_keys:
